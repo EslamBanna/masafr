@@ -17,6 +17,7 @@ class Trips extends Model
         'to_place',
         'start_date',
         'end_date',
-        'description'
+        'description',
+        'active'
     ];
 }

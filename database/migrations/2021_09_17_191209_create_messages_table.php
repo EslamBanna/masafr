@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTripWaysTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateTripWaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('trip_ways', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->integer('trip_id');
-            $table->string('place')->nullable();
-            $table->string('longitude')->nullable();
-            $table->string('latitude')->nullable();
-            $table->date('time')->nullable();
+            $table->boolean('sender_type')->comment('0 from user to masafr, 1 from masafr to user');
+            $table->integer('user_id');
+            $table->integer('masafr_id');
+            $table->text('subject');
+            $table->string('attach');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateTripWaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trip_ways');
+        Schema::dropIfExists('messages');
     }
 }
