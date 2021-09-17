@@ -28,6 +28,7 @@ class RequestService extends Model
         'have_insurance',
         'website_service',
         'number_of_passengers',
-        'type_of_car'
+        'type_of_car',
+        'on_progress'
     ];
 }

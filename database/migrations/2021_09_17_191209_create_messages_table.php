@@ -20,6 +20,8 @@ class CreateMessagesTable extends Migration
             $table->integer('masafr_id');
             $table->text('subject');
             $table->string('attach');
+            $table->integer('related_trip')->nullable();
+            $table->integer('related_request_service')->nullable();
             $table->timestamps();
         });
     }

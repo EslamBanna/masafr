@@ -31,6 +31,7 @@ class CreateTripsTable extends Migration
             $table->string('description')->nullable();
             $table->integer('negotiations')->default(0);
             $table->boolean('active')->default(1)->comment('0 not active , 1 active');
+            $table->boolean('on_progress')->default(0)->comment('0 no one(user) take it , 1 some one take it and it is in progress');
             $table->timestamps();
         });
     }

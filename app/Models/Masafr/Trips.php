@@ -18,6 +18,8 @@ class Trips extends Model
         'start_date',
         'end_date',
         'description',
-        'active'
+        'active',
+        'negotiations',
+        'on_progress'
     ];
 }

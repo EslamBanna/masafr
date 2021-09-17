@@ -27,7 +27,13 @@ class Masafr extends Model
         'car_name',
         'car_model',
         'car_number',
-        'driving_license_photo'
+        'driving_license_photo',
+        'trips_count',
+        'bargains_count',
+        'negative_points_count',
+        'sms_notifications',
+        'email_notifications',
+        'balance'
     ];
 
 

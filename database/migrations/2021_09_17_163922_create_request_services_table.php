@@ -33,6 +33,7 @@ class CreateRequestServicesTable extends Migration
             $table->string('website_service')->nullable();
             $table->integer('number_of_passengers')->nullable();
             $table->enum('type_of_car',[1,2])->nullable()->comment('1 => big car transport, 2 => family car');
+            $table->boolean('on_progress')->default(0)->comment('0 no one(masafr) take it , 1 some one take it and it is in progress');
             $table->timestamps();
         });
     }

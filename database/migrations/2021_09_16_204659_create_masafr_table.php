@@ -38,6 +38,9 @@ class CreateMasafrTable extends Migration
             $table->integer('trips_count')->default(0)->comment('number of trips finished');
             $table->integer('bargains_count')->default(0)->comment('safakat count');
             $table->integer('negative_points_count')->default(0)->comment('Negative points count');
+            $table->boolean('sms_notifications')->default(0)->comment('0 => no  1 => yes');
+            $table->boolean('email_notifications')->default(0)->comment('0 => no  1 => yes');
+            $table->integer('balance')->default(0);
             $table->timestamps();
         });
     }

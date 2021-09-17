@@ -18,6 +18,9 @@ class CreateNotificationsTable extends Migration
             $table->integer('person_id');
             $table->enum('type',[1,2,3])->comment('1 => notification to admin, 2 => to user, 3 => to masafr');
             $table->text('subject');
+            $table->integer('target_code')->comment('to know where he must move to like if value is 3 when he press on it he open his personal tap screen,,, and so on');
+            $table->integer('related_trip')->nullable();
+            $table->integer('related_request_service')->nullable();
             $table->timestamps();
         });
     }

@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('orders_count')->default(0);
             $table->integer('bargains_count')->default(0);
+            $table->boolean('email_notifications')->default(0)->comment('0 => no  1 => yes');
+            $table->integer('balance')->default(0);
             $table->timestamps();
         });
     }

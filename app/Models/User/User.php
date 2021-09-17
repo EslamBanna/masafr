@@ -27,7 +27,11 @@ class User extends Authenticatable
         'phone',
         'validation_code',
         'active',
-        'active_try'
+        'active_try',
+        'orders_count',
+        'bargains_count',
+        'email_notifications',
+        'balance'
     ];
 
     /**
