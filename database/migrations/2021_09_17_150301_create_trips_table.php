@@ -29,8 +29,8 @@ class CreateTripsTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('description')->nullable();
+            $table->integer('negotiations')->default(0);
             $table->boolean('active')->default(1)->comment('0 not active , 1 active');
-
             $table->timestamps();
         });
     }
