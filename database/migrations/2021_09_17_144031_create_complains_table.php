@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionsTable extends Migration
+class CreateComplainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('complains', function (Blueprint $table) {
             $table->id();
-            $table->boolean('type')->default(0)->comment('0 user transaction 1 is masafr transaction');
+            $table->enum('type',[1,2,3])->comment('1 admin 2 user 3 is masafr');
             $table->integer('user_id');
-            $table->text('subject');
+            $table->integer('masafr_id');
+            $table->text('subject')->nullable();
+            $table->string('attach')->nullable();
+            $table->boolean('status')->comment('0 open 1 is close');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('complains');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionsTable extends Migration
+class CreateTripDaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('trip_days', function (Blueprint $table) {
             $table->id();
-            $table->boolean('type')->default(0)->comment('0 user transaction 1 is masafr transaction');
-            $table->integer('user_id');
-            $table->text('subject');
+            $table->integer('trip_id');
+            $table->integer('trip_day')->comment('1 => Saturday, 2 => Sunday, 3 => Monday, 4 => Tuesday, 5 => Wednesday, 6 => Thursday, 7 => Friday');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('trip_days');
     }
 }
