@@ -2,6 +2,14 @@
 
 namespace App\Traits;
 
+use App\Models\Common\CustomerService;
+use App\Models\Common\Transaction;
+use App\Models\User\User;
+use Illuminate\Http\Request;
+use Validator;
+use Auth;
+use JWTAuth;
+
 trait GeneralTrait
 {
 
@@ -11,6 +19,77 @@ trait GeneralTrait
         $filename = $photo->hashName();
         $path = 'images/' . $folder . '/' . $filename;
         return $path;
+    }
+
+    public function CustomerService(Request $request)
+    {
+        try {
+            $rules = [
+                'email' => 'required|email',
+                'name' => 'required',
+                'title' => 'required',
+                'body' => 'required',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            CustomerService::create([
+                'email' => $request->email,
+                'name' => $request->name,
+                'body' => $request->body,
+                'title' => $request->title,
+                'attachment' => $request->attachment,
+            ]);
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function storeTransaction(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|boolean',
+                'user_id' => 'required|exists:users,id',
+                'subject' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $user = User::find($request->user_id);
+            if (!$user) {
+                return $this->returnError('202', 'fail');
+            }
+            Transaction::create([
+                'type' => $request->type,
+                'user_id' => $request->user_id,
+                'subject' => $request->subject
+            ]);
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        try {
+            $token = $request->header('authToken');
+            if ($token) {
+                JWTAuth::setToken($token)->invalidate();
+                return $this->returnSuccessMessage('success');
+            } else {
+                return $this->returnError('E205', 'fail');
+            }
+            // return response()->json(['logout' => true]);
+        } catch (\Exception $e) {
+            return $this->returnError('E205', 'fail');
+        }
     }
 
     public function returnError($errNum, $msg)

@@ -17,9 +17,9 @@ class CreateCustomersServiceTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('body');
-            $table->string('attachment');
+            $table->string('attachment')->nullable();
             $table->timestamps();
         });
     }
