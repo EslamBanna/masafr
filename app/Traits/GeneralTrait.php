@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Common\Comment;
 use App\Models\Common\Complain;
+use App\Models\Common\ComplainList;
 use App\Models\Common\CustomerService;
 use App\Models\Common\Transaction;
 use App\Models\Masafr\Masafr;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use JWTAuth;
+use DB;
 
 trait GeneralTrait
 {
@@ -222,12 +224,12 @@ trait GeneralTrait
     public function makeComplain(Request $request)
     {
         try {
+            DB::beginTransaction();
             $rules = [
                 'subject' => 'required',
                 'type' => 'required',
                 'user_id' => 'required|numeric',
                 'masafr_id' => 'required|numeric',
-                'status' => 'required|boolean',
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
@@ -242,16 +244,37 @@ trait GeneralTrait
             if (!$masafr) {
                 return $this->returnError('202', 'fail');
             }
-            Complain::create([
+            $complain = Complain::where('user_id', $request->user_id)
+                ->where('masafr_id', $request->masafr_id)
+                ->first();
+            if (!$complain) {
+                // return 'empty';
+                $complainID = Complain::insertGetId([
+                    'user_id' => $request->user_id,
+                    'masafr_id' => $request->masafr_id,
+                    'status' => 1
+                ]);
+                ComplainList::create([
+                    'complain_id' => $complainID,
+                    'type' => $request->type,
+                    'subject' => $request->subject,
+                    'attach' => $request->attach
+                ]);
+                DB::commit();
+                return $this->returnSuccessMessage('success');
+            }
+
+            ComplainList::create([
+                'complain_id' => $complain['id'],
                 'type' => $request->type,
                 'subject' => $request->subject,
-                'user_id' => $request->user_id,
-                'masafr_id' => $request->masafr_id,
-                'status' => $request->status
+                'attach' => $request->attach
             ]);
+            DB::commit();
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {
-            return $this->returnError('201', 'fail');
+            DB::rollback();
+            return $this->returnError('201', $e->getMessage());
         }
     }
 

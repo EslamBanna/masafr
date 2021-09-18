@@ -75,7 +75,7 @@ class UserController extends Controller
                 'phone' => $request->phone,
                 'name' => $request->name,
                 'gender' => $request->gender,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'photo' => $request->photo,
                 'country_code' => $request->country_code
             ]);
@@ -126,7 +126,7 @@ class UserController extends Controller
                 'phone' => $request->phone ?? $user->phone,
                 'email' => $request->email ?? $user->email,
                 'name' => $request->name ?? $user->name,
-                'password' => $request->password ?? $user->password,
+                'password' => bcrypt($request->password) ?? $user->password,
                 'gender' => $request->gender ?? $user->gender,
                 'photo' => $request->photo ?? $user->photo,
                 'country_code' => $request->country_code ?? $user->country_code,

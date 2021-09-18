@@ -77,7 +77,7 @@ class MasafrController extends Controller
                 'phone' => $request->phone,
                 'name' => $request->name,
                 'gender' => $request->gender,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'photo' => $request->photo,
             ]);
             return $this->returnData('masafr id',$masafrID);

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ComplainList extends Model
 {
     use HasFactory;
+    protected $table = 'complain_lists';
+    protected $fillable = ['type','subject','attach','complain_id'];
 }
