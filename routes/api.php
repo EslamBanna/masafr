@@ -42,10 +42,25 @@ Route::group(['prefix' => 'masafr'], function () {
 
 Route::group(['prefix' => 'auth/user', 'middleware' => 'checkAuth:user-api'], function () {
     Route::post('/store-transaction', [UserController::class, 'storeTransaction']);
+    Route::post('/get-transactions', [UserController::class, 'getTransactions']);
+    Route::post('/make-comment', [UserController::class, 'makeComment']);
+    Route::post('/get-comments', [UserController::class, 'getComments']);
+    Route::post('/update-comment', [UserController::class, 'updateComment']);
+    Route::post('/update-user-info', [UserController::class, 'updateUserInfo']);
+    Route::post('/make-complain', [UserController::class, 'makeComplain']);
+
+
     Route::post('/logout', [UserController::class, 'logout']);
 });
 
 
 Route::group(['prefix' => 'auth/masafr', 'middleware' => 'checkAuth:masafr-api'], function () {
+    Route::post('/store-transaction', [MasafrController::class, 'storeTransaction']);
+    Route::post('/get-transactions', [MasafrController::class, 'getTransactions']);
+    Route::post('/make-comment', [MasafrController::class, 'makeComment']);
+    Route::post('/get-comments', [MasafrController::class, 'getComments']);
+    Route::post('/update-comment', [MasafrController::class, 'updateComment']);
+    Route::post('/make-complain', [MasafrController::class, 'makeComplain']);
+
     Route::post('/logout', [MasafrController::class, 'logout']);
 });

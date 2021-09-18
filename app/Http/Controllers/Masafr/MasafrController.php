@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Masafr;
 
 use App\Http\Controllers\Controller;
+use App\Models\Masafr\Masafr;
 use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use Validator;
@@ -42,7 +43,7 @@ class MasafrController extends Controller
             $admin->token = $token;
             return $this->returnSuccessMessage($admin);
         } catch (\Exception $e) {
-            return $this->returnError('201', 'fail');
+            return $this->returnError('201', $e->getMessage());
         }
     }
 
@@ -57,12 +58,12 @@ class MasafrController extends Controller
     {
         try {
             $rules = [
-                'email' => 'required|email|unique:users,email',
-                'phone' => 'required|unique:users,phone',
+                'email' => 'required|email|unique:masafr,email',
+                'country_code' => 'required',
+                'phone' => 'required|unique:masafr,phone',
                 'name' => 'required|min:4',
                 'gender' => 'required',
                 'password' => 'required|min:4',
-                'photo' => 'required'
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
@@ -70,17 +71,18 @@ class MasafrController extends Controller
                 return $this->returnValidationError($code, $validator);
             }
 
-            User::create([
+           $masafrID =  Masafr::insertGetId([
                 'email' => $request->email,
+                'country_code' => $request->country_code,
                 'phone' => $request->phone,
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'password' => $request->password,
                 'photo' => $request->photo,
             ]);
-            return $this->returnData('user', $request, 'success');
+            return $this->returnData('masafr id',$masafrID);
         } catch (\Exception $e) {
-            return $this->returnError('E205', 'fail');
+            return $this->returnError('E205', $e->getMessage());
         }
     }
 }

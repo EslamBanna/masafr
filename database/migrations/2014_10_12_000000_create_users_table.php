@@ -19,8 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->double('rate')->default(0);
             $table->string('id_Photo')->nullable();
+            $table->string('national_id_number')->nullable();
             $table->boolean('gender')->default(1)->comment('0 => female  1 => male');
             $table->string('email')->unique();
+            $table->string('country_code');
             $table->string('phone')->unique();
             // $table->string('validation_code')->unique();
             $table->string('validation_code')->nullable();

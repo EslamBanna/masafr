@@ -2,8 +2,11 @@
 
 namespace App\Traits;
 
+use App\Models\Common\Comment;
+use App\Models\Common\Complain;
 use App\Models\Common\CustomerService;
 use App\Models\Common\Transaction;
+use App\Models\Masafr\Masafr;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -53,8 +56,77 @@ trait GeneralTrait
         try {
             $rules = [
                 'type' => 'required|boolean',
-                'user_id' => 'required|exists:users,id',
+                'user_id' => 'required',
                 'subject' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            if ($request->type == 0) {
+                $user = User::find($request->user_id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+            } else if ($request->type == 1) {
+                $masafr = Masafr::find($request->user_id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+            }
+            Transaction::create([
+                'type' => $request->type,
+                'user_id' => $request->user_id,
+                'subject' => $request->subject
+            ]);
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function getTransactions(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|boolean',
+                'user_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            if ($request->type == 0) {
+                $user = User::find($request->user_id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+            } else if ($request->type == 1) {
+                $masafr = Masafr::find($request->user_id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+            }
+            // $user = auth()->guard('masafr-api')->user()['id'];
+            $transactions = Transaction::where('type', '=', $request->type)
+                ->where('user_id', $request->user_id)
+                ->get();
+            return $this->returnData('transactions', $transactions);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function makeComment(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|boolean',
+                'user_id' => 'required|numeric',
+                'masafr_id' => 'required|numeric',
+                'subject' => 'required',
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
@@ -65,10 +137,117 @@ trait GeneralTrait
             if (!$user) {
                 return $this->returnError('202', 'fail');
             }
-            Transaction::create([
+            $masafr = Masafr::find($request->masafr_id);
+            if (!$masafr) {
+                return $this->returnError('202', 'fail');
+            }
+            // $user = auth()->guard('masafr-api')->user()['id'];
+            Comment::create([
                 'type' => $request->type,
                 'user_id' => $request->user_id,
-                'subject' => $request->subject
+                'masafr_id' => $request->masafr_id,
+                'subject' => $request->subject,
+            ]);
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function getComments(Request $request)
+    {
+        try {
+            if (!$request->has('type')) {
+                return $this->returnError('202', 'fail');
+            }
+            if ($request->type == 0) {
+                if (!$request->has('masafr_id')) {
+                    return $this->returnError('202', 'fail');
+                }
+                $masafr = Masafr::find($request->masafr_id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+            } else if ($request->type == 1) {
+                if (!$request->has('user_id')) {
+                    return $this->returnError('202', 'fail');
+                }
+                $user = User::find($request->user_id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+            }
+            // $user = auth()->guard('masafr-api')->user()['id'];
+            if ($request->type == 0) {
+                $comments = Comment::where('type', 0)
+                    ->where('masafr_id', $request->masafr_id)
+                    ->get();
+                return $this->returnData('comments', $comments);
+            }
+            $comments = Comment::where('type', 1)
+                ->where('user_id', $request->user_id)
+                ->get();
+            return $this->returnData('comments', $comments);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function updateComment(Request $request)
+    {
+        try {
+            $rules = [
+                'id' => 'required|numeric',
+                'subject' => 'required',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $comment = Comment::find($request->id);
+            if (!$comment) {
+                return $this->returnError('202', 'fail');
+            }
+            $comment->update([
+                'wait' => 1,
+                'wait_subject' => $request->subject
+            ]);
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function makeComplain(Request $request)
+    {
+        try {
+            $rules = [
+                'subject' => 'required',
+                'type' => 'required',
+                'user_id' => 'required|numeric',
+                'masafr_id' => 'required|numeric',
+                'status' => 'required|boolean',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $user = User::find($request->user_id);
+            if (!$user) {
+                return $this->returnError('202', 'fail');
+            }
+            $masafr = Masafr::find($request->masafr_id);
+            if (!$masafr) {
+                return $this->returnError('202', 'fail');
+            }
+            Complain::create([
+                'type' => $request->type,
+                'subject' => $request->subject,
+                'user_id' => $request->user_id,
+                'masafr_id' => $request->masafr_id,
+                'status' => $request->status
             ]);
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {

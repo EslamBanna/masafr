@@ -19,6 +19,7 @@ class Masafr extends Authenticatable implements JWTSubject
         'photo',
         'id_Photo',
         'gender',
+        'country_code',
         'phone',
         'validation_code',
         'active',
@@ -52,6 +53,11 @@ class Masafr extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
     }
 
 }
