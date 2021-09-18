@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->boolean('gender')->default(1)->comment('0 => female  1 => male');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('validation_code')->unique();
+            // $table->string('validation_code')->unique();
+            $table->string('validation_code')->nullable();
             $table->boolean('active')->default(0)->comment('0 => no  1 => yes');
             $table->integer('active_try')->default(0)->comment('how many he try to send a verfication code to mobile phone');
             $table->timestamp('email_verified_at')->nullable();

@@ -2,10 +2,12 @@
 
 namespace App\Models\Masafr;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Masafr extends Model
+class Masafr extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
@@ -36,5 +38,20 @@ class Masafr extends Model
         'balance'
     ];
 
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
 }

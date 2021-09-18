@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'user-api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'masafr-api' => [
+            'driver' => 'jwt',
+            'provider' => 'masafr',
+        ],
     ],
 
     /*
@@ -62,7 +74,11 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\User\User::class,
+        ],
+        'masafr'=> [
+            'driver' => 'eloquent',
+            'model' => App\Models\Masafr\Masafr::class,
         ],
 
         // 'users' => [
