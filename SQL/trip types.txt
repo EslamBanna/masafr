@@ -1,0 +1,129 @@
+first trip
+
+{
+       "masafr_id": 1,
+       "only_women": 1,
+       "type_of_trips": 1,
+       "type_of_services": 7,
+       "from_place": "tanta",
+       "from_longitude": "12.3651",
+       "from_latitude": "30.25315",
+       "description": "test disciption",
+       "to_place": "alex",
+       "to_longitude": "50.635154",
+       "to_latitude": "45.353",
+       "start_date": "2021-09-18 22:04:55",
+       "end_date": "2021-09-30 22:04:55",
+       "trip_ways":[
+        {
+            "place": "kom hammada",
+            "time": "2021-09-18 22:04:55"
+        },
+        {
+            "place": "damanhour",
+            "time": "2021-09-19 22:04:55"
+        }
+    ]
+}
+
+########################################################
+seconde trip
+
+{
+       "masafr_id": 1,
+       "only_women": 0,
+       "type_of_trips": 2,
+       "type_of_services": 5,
+       "from_place": "tanta",
+       "from_longitude": "12.3651",
+       "from_latitude": "30.25315",
+       "description": "test disciption",
+       "to_place": "alex",
+       "to_longitude": "50.635154",
+       "to_latitude": "45.353",
+       "trip_ways":[
+        {
+            "place": "kom hammada",
+            "time": "2021-09-18 22:04:55"
+        },
+        {
+            "place": "damanhour",
+            "time": "2021-09-19 22:04:55"
+        }
+    ],
+    "trip_days":[
+        {
+            "trip_day":1
+        },
+         {
+            "trip_day":3
+        },
+         {
+            "trip_day":5
+        }
+    ]
+}
+
+###############################################
+third trip
+
+
+{
+       "masafr_id": 1,
+       "only_women": 1,
+       "type_of_trips": 3,
+       "type_of_services": 4,
+       "from_place": "tanta",
+       "from_longitude": "12.3651",
+       "from_latitude": "30.25315",
+       "description": "test disciption",
+       "to_place": "alex",
+       "to_longitude": "50.635154",
+       "to_latitude": "45.353",
+       "trip_ways":[
+        {
+            "place": "kom hammada"
+        },
+        {
+            "place": "damanhour"
+        }
+    ]
+}
+###############################################
+fourth trip
+
+
+{
+       "masafr_id": 1,
+       "type_of_trips": 4,
+       "type_of_services": 7,
+       "from_place": "shibin",
+       "from_longitude": "12.3651",
+       "from_latitude": "30.25315",
+       "description": "test disciption"
+}
+
+############################################
+test
+
+{
+    "masafr_id": "1",
+    "type_of_trips": "1",
+    "type_of_services": "2",
+    "from_place": "tanta",
+    "description": "asdfg",
+    "trip_ways":[
+        {
+            "place": "kom hammada",
+            "time": "2021-09-18 22:04:55"
+        },
+        {
+            "place": "damanhour",
+            "time": "2021-09-18 22:04:55"
+        },
+        {
+            "place": "alex",
+            "time": "2021-09-18 22:04:55"
+        }
+    ]
+}

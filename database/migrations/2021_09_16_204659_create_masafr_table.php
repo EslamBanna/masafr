@@ -31,10 +31,12 @@ class CreateMasafrTable extends Migration
             $table->string('password');
             $table->string('national_id_number')->nullable();
             $table->string('nationality')->nullable();
-            $table->integer('car_id')->nullable();
             $table->string('car_name')->nullable();
             $table->string('car_model')->nullable();
             $table->string('car_number')->nullable();
+            $table->string('car_image_east')->nullable();
+            $table->string('car_image_west')->nullable();
+            $table->string('car_image_north')->nullable();
             $table->string('driving_license_photo')->nullable();
             $table->rememberToken();
             $table->integer('trips_count')->default(0)->comment('number of trips finished');

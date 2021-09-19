@@ -10,5 +10,15 @@ class Message extends Model
     use HasFactory;
 
     protected $table = 'messages';
-    protected $fillable = ['sender_type','from_person','to_person','subject','attach','related_trip','related_request_service'];
+    protected $fillable = [
+        'sender_type',
+        'user_id',
+        'masafr_id',
+        'from_person',
+        'to_person',
+        'subject',
+        'attach',
+        'related_trip',
+        'related_request_service'
+    ];
 }

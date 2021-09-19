@@ -18,6 +18,7 @@ class CreateAdminNotificationsTable extends Migration
             $table->boolean('type')->default(0)->comment('0 user 1 is masafr');
             $table->integer('person_id');
             $table->text('subject')->nullable();
+            $table->boolean('showed')->default(0)->comment('0 not yet 1 showed it');
             $table->timestamps();
         });
     }

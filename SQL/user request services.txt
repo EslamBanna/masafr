@@ -1,0 +1,80 @@
+first type
+
+{
+    "user_id": 1,
+    "type_of_trips": 1,
+    "type_of_services": 6,
+    "from_place": "tanta",
+    "from_longitude": "12.255",
+    "from_latitude": "15.3245",
+    "to_place": "alex",
+    "to_longitude": "40.2155",
+    "to_latitude": "30.21456",
+    "max_day": "2021-09-19",
+    "delivery_to": 1,
+    "photo": "abcd.png",
+    "description": "nonee",
+    "only_women": 1
+}
+
+#####################################################
+second type
+
+{
+    "user_id": 1,
+    "type_of_trips": 2,
+    "type_of_services": 5,
+    "from_place": "tanta",
+    "from_longitude": "12.255",
+    "from_latitude": "15.3245",
+    "to_place": "alex",
+    "to_longitude": "40.2155",
+    "to_latitude": "30.21456",
+    "max_day": "2021-09-19",
+    "delivery_to": 1,
+    "photo": "abcd.png",
+    "description": "nonee",
+    "only_women": 1,
+    "have_insurance": 0,
+    "website_service": "amazon.com"
+}
+
+
+######################################################
+
+third type
+
+
+
+{
+    "user_id": 1,
+    "type_of_trips": 3,
+    "type_of_services": 2,
+    "from_place": "tanta",
+    "from_longitude": "12.255",
+    "from_latitude": "15.3245",
+    "to_place": "alex",
+    "to_longitude": "40.2155",
+    "to_latitude": "30.21456",
+    "description": "nonee",
+    "only_women": 1,
+    "number_of_passengers": 14,
+    "type_of_car": 1
+}
+
+
+###################################################
+fourth type
+
+{
+    "user_id": 1,
+    "type_of_trips": 4,
+    "type_of_services": 3,
+    "from_place": "tanta",
+    "from_longitude": "12.255",
+    "from_latitude": "15.3245",
+    "max_day": "2021-09-19",
+    "photo": "abcd.png",
+    "description": "nonee",
+    "only_women": 1
+}

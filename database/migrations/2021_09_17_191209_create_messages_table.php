@@ -18,8 +18,8 @@ class CreateMessagesTable extends Migration
             $table->boolean('sender_type')->comment('0 from user to masafr, 1 from masafr to user');
             $table->integer('user_id');
             $table->integer('masafr_id');
-            $table->text('subject');
-            $table->string('attach');
+            $table->text('subject')->nullable();
+            $table->string('attach')->nullable();
             $table->integer('related_trip')->nullable();
             $table->integer('related_request_service')->nullable();
             $table->timestamps();

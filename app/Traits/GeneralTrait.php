@@ -6,6 +6,8 @@ use App\Models\Common\Comment;
 use App\Models\Common\Complain;
 use App\Models\Common\ComplainList;
 use App\Models\Common\CustomerService;
+use App\Models\Common\Message;
+use App\Models\Common\Notification;
 use App\Models\Common\Transaction;
 use App\Models\Masafr\Masafr;
 use App\Models\User\User;
@@ -163,18 +165,18 @@ trait GeneralTrait
                 return $this->returnError('202', 'fail');
             }
             if ($request->type == 0) {
-                if (!$request->has('masafr_id')) {
+                if (!$request->has('pesron_id')) {
                     return $this->returnError('202', 'fail');
                 }
-                $masafr = Masafr::find($request->masafr_id);
+                $masafr = Masafr::find($request->pesron_id);
                 if (!$masafr) {
                     return $this->returnError('202', 'fail');
                 }
             } else if ($request->type == 1) {
-                if (!$request->has('user_id')) {
+                if (!$request->has('pesron_id')) {
                     return $this->returnError('202', 'fail');
                 }
-                $user = User::find($request->user_id);
+                $user = User::find($request->pesron_id);
                 if (!$user) {
                     return $this->returnError('202', 'fail');
                 }
@@ -182,12 +184,12 @@ trait GeneralTrait
             // $user = auth()->guard('masafr-api')->user()['id'];
             if ($request->type == 0) {
                 $comments = Comment::where('type', 0)
-                    ->where('masafr_id', $request->masafr_id)
+                    ->where('masafr_id', $request->pesron_id)
                     ->get();
                 return $this->returnData('comments', $comments);
             }
             $comments = Comment::where('type', 1)
-                ->where('user_id', $request->user_id)
+                ->where('user_id', $request->pesron_id)
                 ->get();
             return $this->returnData('comments', $comments);
         } catch (\Exception $e) {
@@ -274,8 +276,174 @@ trait GeneralTrait
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {
             DB::rollback();
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function getComplains(Request $request)
+    {
+        try {
+
+            $rules = [
+                'user_id' => 'required|numeric',
+                'masafr_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $user = User::find($request->user_id);
+            if (!$user) {
+                return $this->returnError('202', 'fail');
+            }
+            $masafr = Masafr::find($request->masafr_id);
+            if (!$masafr) {
+                return $this->returnError('202', 'fail');
+            }
+            $complain = Complain::where('user_id', $request->user_id)
+                ->where('masafr_id', $request->masafr_id)
+                ->first();
+            return $this->returnData('data', $complain);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function getNotifications(Request $request)
+    {
+        try {
+
+            $rules = [
+                'type' => 'required|numeric',
+                'person_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            if ($request->type == 0) {
+                $user = User::find($request->person_id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+            } else  if ($request->type == 1) {
+                $masafr = Masafr::find($request->person_id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+            }
+            $notifications = Notification::where('type', $request->type)
+                ->where('person_id', $request->person_id)
+                ->paginate($request->paginateCount);
+            return $this->returnData('data', $notifications);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function storeNotifications(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|numeric',
+                'person_id' => 'required|numeric',
+                'subject' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            if ($request->type == 0) {
+                $user = User::find($request->person_id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+            } else if ($request->type == 1) {
+                $masafr = Masafr::find($request->person_id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+            }
+
+            Notification::create([
+                'type' => $request->type,
+                'person_id' => $request->person_id,
+                'subject' => $request->subject,
+                'target_code' => $request->target_code ?? null,
+                'related_trip' => $request->related_trip ?? null,
+                'related_request_service' => $request->related_request_service ?? null,
+            ]);
+
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function sendMessage(Request $request)
+    {
+        try {
+            $rules = [
+                'sender_type' => 'required|numeric',
+                'user_id' => 'required|numeric|exists:users,id',
+                'masafr_id' => 'required|numeric|exists:masafr,id',
+                'related_trip' => 'required|numeric|exists:trips,id',
+                'related_request_service' => 'required|numeric|exists:request_services,id'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            Message::create([
+                'sender_type' => $request->sender_type,
+                'user_id' => $request->user_id,
+                'masafr_id' => $request->masafr_id,
+                'related_trip' => $request->related_trip,
+                'related_request_service' => $request->related_request_service,
+                'subject' => $request->subject,
+                'attach' => $request->attach
+            ]);
+
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
             return $this->returnError('201', $e->getMessage());
         }
+    }
+
+    public function getMessages(Request $request)
+    {
+        try {
+            $rules = [
+                'user_id' => 'required|numeric|exists:users,id',
+                'masafr_id' => 'required|numeric|exists:masafr,id'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            $messages = Message::where('user_id', $request->user_id)
+                ->where('masafr_id', $request->masafr_id)
+                ->get();
+
+            return $this->returnData('data',$messages);
+        } catch (\Exception $e) {
+            return $this->returnError('201', $e->getMessage());
+        }
+    }
+
+
+    public function me()
+    {
+        return response()->json(auth()->user());
     }
 
     public function logout(Request $request)
