@@ -1,0 +1,1685 @@
+{
+	"info": {
+		"_postman_id": "bd56817a-b2d9-470f-84c6-4805959cf608",
+		"name": "masafr local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/login?phone=01234567893&password=eslam123",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "es1@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "01234567893"
+						},
+						{
+							"key": "password",
+							"value": "eslam123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/masafr/login?email=es2@gmail.com&password=eslam1232",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"masafr",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "es2@gmail.com"
+						},
+						{
+							"key": "phone",
+							"value": "01234567893",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "eslam1232"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA2MjE3MywiZXhwIjoxNjMyMDY1NzczLCJuYmYiOjE2MzIwNjIxNzMsImp0aSI6IlpqcFl3Z2ZSenJJdnJwOUciLCJzdWIiOjMsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Ex_zk7Xvrt0ncyNiaWlBFWsRzQgR63MBvWG05Rb_KRo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-user-info",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-user-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get masafr info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDc4OTc0LCJleHAiOjE2MzIwODI1NzQsIm5iZiI6MTYzMjA3ODk3NCwianRpIjoib1NGTlpIa2M3ZjdYU2YxUSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.GKXPsdFW43oY1k7176hd4AjN-ybeteq7V0NK3OgeuYc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-user-info",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-user-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/create-account?email=es1@gmail.com3&country_code=+20&phone=01234567893&name=eslam2&gender=1&password=eslam123&photo=aqwe.jpg",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"create-account"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "es1@gmail.com3"
+						},
+						{
+							"key": "country_code",
+							"value": "+20"
+						},
+						{
+							"key": "phone",
+							"value": "01234567893"
+						},
+						{
+							"key": "name",
+							"value": "eslam2"
+						},
+						{
+							"key": "gender",
+							"value": "1"
+						},
+						{
+							"key": "password",
+							"value": "eslam123"
+						},
+						{
+							"key": "photo",
+							"value": "aqwe.jpg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new masafr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/masafr/create-account?email=es2@gmail.com&phone=01234567891&name=test  masafr2&gender=0&password=eslam1232&photo=aqwe.jpg22&country_code=+20",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"masafr",
+						"create-account"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "es2@gmail.com"
+						},
+						{
+							"key": "phone",
+							"value": "01234567891"
+						},
+						{
+							"key": "name",
+							"value": "test  masafr2"
+						},
+						{
+							"key": "gender",
+							"value": "0"
+						},
+						{
+							"key": "password",
+							"value": "eslam1232"
+						},
+						{
+							"key": "photo",
+							"value": "aqwe.jpg22"
+						},
+						{
+							"key": "country_code",
+							"value": "+20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user store transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5MDY4NywiZXhwIjoxNjMxOTk0Mjg3LCJuYmYiOjE2MzE5OTA2ODcsImp0aSI6Im45STl2RTNyUVFCWllmazMiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.HW3o4vRO-vQyqLo4UB98dtU0zDJ0IUZM_QVFUyYg39M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/store-transaction?type=0&user_id=1&subject=50 dollar to mohamed ali",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"store-transaction"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "50 dollar to mohamed ali"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr store transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5MDY4NywiZXhwIjoxNjMxOTk0Mjg3LCJuYmYiOjE2MzE5OTA2ODcsImp0aSI6Im45STl2RTNyUVFCWllmazMiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.HW3o4vRO-vQyqLo4UB98dtU0zDJ0IUZM_QVFUyYg39M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/store-transaction?type=1&user_id=1&subject=50 dollar to mohamed ali2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"store-transaction"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "50 dollar to mohamed ali2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user transactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5MjUxNSwiZXhwIjoxNjMxOTk2MTE1LCJuYmYiOjE2MzE5OTI1MTUsImp0aSI6InJsMmJHcE9FVXh4RzVJYkIiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.VcR70Wjh32JcGymm-WeGG7EWyb-nPlOXSFoutGCSzIA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-transactions?type=0&user_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get masafr transactions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5MjUxNSwiZXhwIjoxNjMxOTk2MTE1LCJuYmYiOjE2MzE5OTI1MTUsImp0aSI6InJsMmJHcE9FVXh4RzVJYkIiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.VcR70Wjh32JcGymm-WeGG7EWyb-nPlOXSFoutGCSzIA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-transactions?type=1&user_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk3ODU3NiwiZXhwIjoxNjMxOTgyMTc2LCJuYmYiOjE2MzE5Nzg1NzYsImp0aSI6InMzbnZ5UW90dHhqbXJlUDMiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.JCgL2_DPEh4RBLH1bmlYLocGxP_HLI6rwKwvIjaiTXM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout masafr",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMxOTkwODUxLCJleHAiOjE2MzE5OTQ0NTEsIm5iZiI6MTYzMTk5MDg1MSwianRpIjoiVWVrQ0RYcTFmZXhmZTdGZiIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.0bOfzW_R0AU4M3dPtgTq8i5QA-4N7xFooQEDyeP1tRU",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer services",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/common/customer-services?email=test@gmail.com2&name=test test2&title=help2&body=lorem test text here without attachment2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"common",
+						"customer-services"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "test@gmail.com2"
+						},
+						{
+							"key": "name",
+							"value": "test test2"
+						},
+						{
+							"key": "title",
+							"value": "help2"
+						},
+						{
+							"key": "body",
+							"value": "lorem test text here without attachment2"
+						},
+						{
+							"key": "attachment",
+							"value": "sdsdvc.png",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user make comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5MjUxNSwiZXhwIjoxNjMxOTk2MTE1LCJuYmYiOjE2MzE5OTI1MTUsImp0aSI6InJsMmJHcE9FVXh4RzVJYkIiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.VcR70Wjh32JcGymm-WeGG7EWyb-nPlOXSFoutGCSzIA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/make-comment?type=0&user_id=2&masafr_id=1&subject=he is very good user",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"make-comment"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "user_id",
+							"value": "2"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "he is very good user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr make comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMxOTkyODE5LCJleHAiOjE2MzE5OTY0MTksIm5iZiI6MTYzMTk5MjgxOSwianRpIjoid1MzbW9EVUZJaGFkU0E5ZSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.t5vnrbikPsbqSfdvsIXmtfjlzMeXEvLC7T8IPVXaxFI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/make-comment?type=1&user_id=2&masafr_id=1&subject=he is very good user",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"make-comment"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "user_id",
+							"value": "2"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "he is very good user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user get comments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA3OTk3MiwiZXhwIjoxNjMyMDgzNTcyLCJuYmYiOjE2MzIwNzk5NzIsImp0aSI6IjFtdTh2bnVvWFhYaDI0STYiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Q6y_6IobYSR10Zv7h8ZJ4C_d23iu4ccYD0p6sN2s274",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-comments?type=1&pesron_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-comments"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "pesron_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr get comments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDc4OTc0LCJleHAiOjE2MzIwODI1NzQsIm5iZiI6MTYzMjA3ODk3NCwianRpIjoib1NGTlpIa2M3ZjdYU2YxUSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.GKXPsdFW43oY1k7176hd4AjN-ybeteq7V0NK3OgeuYc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-comments?type=0&pesron_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-comments"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "pesron_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user update comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5NTI0MSwiZXhwIjoxNjMxOTk4ODQxLCJuYmYiOjE2MzE5OTUyNDEsImp0aSI6IlFHSHdGRWJRUGlUanpsaVAiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.u06gGI_JuNRW_h6iIZUzwXvlmN178B9V6NA57mCk9iE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/update-comment?id=1&subject=changed comment3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"update-comment"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "changed comment3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr update comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5NTI0MSwiZXhwIjoxNjMxOTk4ODQxLCJuYmYiOjE2MzE5OTUyNDEsImp0aSI6IlFHSHdGRWJRUGlUanpsaVAiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.u06gGI_JuNRW_h6iIZUzwXvlmN178B9V6NA57mCk9iE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/update-comment?id=3&subject=changed comment3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"update-comment"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "subject",
+							"value": "changed comment3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMTk5NTI0MSwiZXhwIjoxNjMxOTk4ODQxLCJuYmYiOjE2MzE5OTUyNDEsImp0aSI6IlFHSHdGRWJRUGlUanpsaVAiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.u06gGI_JuNRW_h6iIZUzwXvlmN178B9V6NA57mCk9iE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/update-user-info?id=2&name=eslam2&photo=123.jpg&national_id_number=12345678987452&gender=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"update-user-info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						},
+						{
+							"key": "name",
+							"value": "eslam2"
+						},
+						{
+							"key": "photo",
+							"value": "123.jpg"
+						},
+						{
+							"key": "national_id_number",
+							"value": "12345678987452"
+						},
+						{
+							"key": "phone",
+							"value": "01234567892",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update masafr info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDg0MzE0LCJleHAiOjE2MzIwODc5MTQsIm5iZiI6MTYzMjA4NDMxNCwianRpIjoiQkNSWWJyM1E2RUJEYVRIYiIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.0mYaCkr_sdqMmnEcUAxNQirbYp-WyFDbEBJjHlY9jrE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/update-masafr-info?id=1&name=eslam2&photo=123.jpg&national_id_number=12345678987452&gender=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"update-masafr-info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "name",
+							"value": "eslam2"
+						},
+						{
+							"key": "photo",
+							"value": "123.jpg"
+						},
+						{
+							"key": "national_id_number",
+							"value": "12345678987452"
+						},
+						{
+							"key": "phone",
+							"value": "01234567892",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user make complain",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjAwMTg5NCwiZXhwIjoxNjMyMDA1NDk0LCJuYmYiOjE2MzIwMDE4OTQsImp0aSI6ImRlVGdEY3VTQTZqMUx2WlEiLCJzdWIiOjMsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.z4q_6qM244AG__iWX8kTvg6dv62F_Lvhj-hOWz180bk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/make-complain?type=0&user_id=1&masafr_id=1&subject=he take money5 from me i'am user",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"make-complain"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "he take money5 from me i'am user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafar make complain",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDAzMDIwLCJleHAiOjE2MzIwMDY2MjAsIm5iZiI6MTYzMjAwMzAyMCwianRpIjoiYmxJTnU1c2EwZjR0UWphRSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.RWebWF3ddZc99wpMN6IYUEJN0j-tTTwGpj7bpj4SlOk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/make-complain?type=1&user_id=1&masafr_id=1&subject=he doesnot give me any thing ia'm masafr2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"make-complain"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "he doesnot give me any thing ia'm masafr2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user get complains",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA2MjE3MywiZXhwIjoxNjMyMDY1NzczLCJuYmYiOjE2MzIwNjIxNzMsImp0aSI6IlpqcFl3Z2ZSenJJdnJwOUciLCJzdWIiOjMsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Ex_zk7Xvrt0ncyNiaWlBFWsRzQgR63MBvWG05Rb_KRo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-complains?user_id=1&masafr_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-complains"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr get complains",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDYyMjExLCJleHAiOjE2MzIwNjU4MTEsIm5iZiI6MTYzMjA2MjIxMSwianRpIjoiNHVwbjhSYXpuRzcxbUVrSSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.NXPnVa_9-mVZAk7Dpw-bZnoCCWYovZinNafHQF3pbiA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-complains?user_id=1&masafr_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-complains"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr create trip",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkwNTUwLCJleHAiOjE2MzIwOTQxNTAsIm5iZiI6MTYzMjA5MDU1MCwianRpIjoidUJldGg3Y0tpUjd4RWxJQyIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.1VLznyUKZMTGCEW4wSR5jnKeGPr27LFGgXgYYKfYKdE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n       \"masafr_id\": 1,\r\n       \"type_of_trips\": 4,\r\n       \"type_of_services\": 7,\r\n       \"from_place\": \"shibin\",\r\n       \"from_longitude\": \"12.3651\",\r\n       \"from_latitude\": \"30.25315\",\r\n       \"description\": \"test disciption\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/create-trip",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"create-trip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update trip info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkyNzE5LCJleHAiOjE2MzIwOTYzMTksIm5iZiI6MTYzMjA5MjcxOSwianRpIjoiVnJSQmw4WENROTF2aFJnaSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9._GnwulU2-aliWFothCDiMgtXAFRTuvSnOn3mxM-gpmw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/update-trip?id=1&active=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"update-trip"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "active",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete trip",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkyNzE5LCJleHAiOjE2MzIwOTYzMTksIm5iZiI6MTYzMjA5MjcxOSwianRpIjoiVnJSQmw4WENROTF2aFJnaSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9._GnwulU2-aliWFothCDiMgtXAFRTuvSnOn3mxM-gpmw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/delete-trip?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"delete-trip"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get masafr trip",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA4ODI2MCwiZXhwIjoxNjMyMDkxODYwLCJuYmYiOjE2MzIwODgyNjAsImp0aSI6ImV5Q2ZkWFRvMlAxNDVhSFkiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.sHbdjbruzNxwButZJIeDJNZCg08i4VjST7EXQQeQhag",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-trip?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-trip"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all trips",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/user/all-trips",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"all-trips"
+					],
+					"query": [
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all request services of user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/masafr/all-request-services",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"masafr",
+						"all-request-services"
+					],
+					"query": [
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add info to masafr",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo1",
+							"type": "file",
+							"src": "/F:/web/images/25.jpg"
+						},
+						{
+							"key": "photo2",
+							"type": "file",
+							"src": "/F:/web/images/10.jpg"
+						},
+						{
+							"key": "photo3",
+							"type": "file",
+							"src": "/F:/web/images/13.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/masafr/add-masafr-info?id=1&national_id_number=123456789&nationality=egyption&car_name=M-200&car_model=marcides&car_number=123&id_Photo=www.jpg&driving_license_photo=ddd.png&car_image_east=qwe.jpg&car_image_west=uio.jpg&car_image_north=cvb.jpeg",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"masafr",
+						"add-masafr-info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "national_id_number",
+							"value": "123456789"
+						},
+						{
+							"key": "nationality",
+							"value": "egyption"
+						},
+						{
+							"key": "car_name",
+							"value": "M-200"
+						},
+						{
+							"key": "car_model",
+							"value": "marcides"
+						},
+						{
+							"key": "car_number",
+							"value": "123"
+						},
+						{
+							"key": "id_Photo",
+							"value": "www.jpg"
+						},
+						{
+							"key": "driving_license_photo",
+							"value": "ddd.png"
+						},
+						{
+							"key": "car_image_east",
+							"value": "qwe.jpg"
+						},
+						{
+							"key": "car_image_west",
+							"value": "uio.jpg"
+						},
+						{
+							"key": "car_image_north",
+							"value": "cvb.jpeg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user notifications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA3OTk3MiwiZXhwIjoxNjMyMDgzNTcyLCJuYmYiOjE2MzIwNzk5NzIsImp0aSI6IjFtdTh2bnVvWFhYaDI0STYiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Q6y_6IobYSR10Zv7h8ZJ4C_d23iu4ccYD0p6sN2s274",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-notifications?type=0&person_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-notifications"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "person_id",
+							"value": "1"
+						},
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get masafr notifications",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA3OTk3MiwiZXhwIjoxNjMyMDgzNTcyLCJuYmYiOjE2MzIwNzk5NzIsImp0aSI6IjFtdTh2bnVvWFhYaDI0STYiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Q6y_6IobYSR10Zv7h8ZJ4C_d23iu4ccYD0p6sN2s274",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-notifications?type=1&person_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-notifications"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "person_id",
+							"value": "1"
+						},
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user store notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA3OTk3MiwiZXhwIjoxNjMyMDgzNTcyLCJuYmYiOjE2MzIwNzk5NzIsImp0aSI6IjFtdTh2bnVvWFhYaDI0STYiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Q6y_6IobYSR10Zv7h8ZJ4C_d23iu4ccYD0p6sN2s274",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/store-notifications?type=0&person_id=1&subject=welcome to our system2&target_code=300&related_trip=1&related_request_service=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"store-notifications"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "0"
+						},
+						{
+							"key": "person_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "welcome to our system2"
+						},
+						{
+							"key": "target_code",
+							"value": "300"
+						},
+						{
+							"key": "related_trip",
+							"value": "1"
+						},
+						{
+							"key": "related_request_service",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr store notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA3OTk3MiwiZXhwIjoxNjMyMDgzNTcyLCJuYmYiOjE2MzIwNzk5NzIsImp0aSI6IjFtdTh2bnVvWFhYaDI0STYiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Q6y_6IobYSR10Zv7h8ZJ4C_d23iu4ccYD0p6sN2s274",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/store-notifications?type=1&person_id=1&subject=welcome to our system2&target_code=300&related_trip=1&related_request_service=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"store-notifications"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "1"
+						},
+						{
+							"key": "person_id",
+							"value": "1"
+						},
+						{
+							"key": "subject",
+							"value": "welcome to our system2"
+						},
+						{
+							"key": "target_code",
+							"value": "300"
+						},
+						{
+							"key": "related_trip",
+							"value": "1"
+						},
+						{
+							"key": "related_request_service",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user make request service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA4ODI2MCwiZXhwIjoxNjMyMDkxODYwLCJuYmYiOjE2MzIwODgyNjAsImp0aSI6ImV5Q2ZkWFRvMlAxNDVhSFkiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.sHbdjbruzNxwButZJIeDJNZCg08i4VjST7EXQQeQhag",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"type_of_trips\": 4,\r\n    \"type_of_services\": 3,\r\n    \"from_place\": \"tanta\",\r\n    \"from_longitude\": \"12.255\",\r\n    \"from_latitude\": \"15.3245\",\r\n    \"max_day\": \"2021-09-19\",\r\n    \"photo\": \"abcd.png\",\r\n    \"description\": \"nonee\",\r\n    \"only_women\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/auth/user/create-request-service",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"create-request-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user request service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkwMjIxLCJleHAiOjE2MzIwOTM4MjEsIm5iZiI6MTYzMjA5MDIyMSwianRpIjoidmJ5T3hyeEJnNmFNU01jOSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.TMBygBZ4bq2IWqFVEnW9GxDJuac9c-X8aB-Fw6LCuaM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-request-service?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-request-service"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user send message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA5MTk1OCwiZXhwIjoxNjMyMDk1NTU4LCJuYmYiOjE2MzIwOTE5NTgsImp0aSI6IkhqcTBsYmdvYkp4ZklMZnAiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.2ppfBj6tkyYOFpSyUGogP2vvfdhlO3bhYgUuI6jCgMw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/send-message?sender_type=0&user_id=1&masafr_id=1&related_trip=1&related_request_service=2&subject=sad&attach=:(",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"send-message"
+					],
+					"query": [
+						{
+							"key": "sender_type",
+							"value": "0"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "related_trip",
+							"value": "1"
+						},
+						{
+							"key": "related_request_service",
+							"value": "2"
+						},
+						{
+							"key": "subject",
+							"value": "sad"
+						},
+						{
+							"key": "attach",
+							"value": ":("
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "masafr send message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA5MTk1OCwiZXhwIjoxNjMyMDk1NTU4LCJuYmYiOjE2MzIwOTE5NTgsImp0aSI6IkhqcTBsYmdvYkp4ZklMZnAiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.2ppfBj6tkyYOFpSyUGogP2vvfdhlO3bhYgUuI6jCgMw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/send-message?sender_type=1&user_id=1&masafr_id=1&related_trip=1&related_request_service=2&subject=welcome bro&attach=:)",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"send-message"
+					],
+					"query": [
+						{
+							"key": "sender_type",
+							"value": "1"
+						},
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						},
+						{
+							"key": "related_trip",
+							"value": "1"
+						},
+						{
+							"key": "related_request_service",
+							"value": "2"
+						},
+						{
+							"key": "subject",
+							"value": "welcome bro"
+						},
+						{
+							"key": "attach",
+							"value": ":)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get messages",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkyNzE5LCJleHAiOjE2MzIwOTYzMTksIm5iZiI6MTYzMjA5MjcxOSwianRpIjoiVnJSQmw4WENROTF2aFJnaSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9._GnwulU2-aliWFothCDiMgtXAFRTuvSnOn3mxM-gpmw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-messages?user_id=1&masafr_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-messages"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
