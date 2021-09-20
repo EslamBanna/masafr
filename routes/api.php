@@ -31,13 +31,13 @@ Route::group(['prefix' => 'common'], function () {
 
 
 Route::group(['prefix' => 'user'], function () {
-    Route::post('/all-trips',[Controller::class,'getAllTrips']);
+    Route::post('/all-trips', [Controller::class, 'getAllTrips']);
     Route::post('/create-account', [UserController::class, 'createUser']);
     Route::post('/login', [UserController::class, 'login']);
 });
 
 Route::group(['prefix' => 'masafr'], function () {
-    Route::post('/all-request-services',[Controller::class,'getAllRequestServices']);
+    Route::post('/all-request-services', [Controller::class, 'getAllRequestServices']);
     Route::post('/create-account', [MasafrController::class, 'createMasafr']);
     Route::post('/login', [MasafrController::class, 'login']);
     Route::post('/add-masafr-info', [MasafrController::class, 'addMasafrInfo']);
@@ -59,6 +59,7 @@ Route::group(['prefix' => 'auth/user', 'middleware' => 'checkAuth:user-api'], fu
     Route::post('/get-trip', [UserController::class, 'getTrip']);
     Route::post('/send-message', [UserController::class, 'sendMessage']);
     Route::post('/get-messages', [UserController::class, 'getMessages']);
+    Route::post('/search-trips', [UserController::class, 'searchTrips']);
 
     Route::post('/logout', [UserController::class, 'logout']);
 });
@@ -82,6 +83,11 @@ Route::group(['prefix' => 'auth/masafr', 'middleware' => 'checkAuth:masafr-api']
     Route::post('/get-request-service', [MasafrController::class, 'getRequestService']);
     Route::post('/send-message', [MasafrController::class, 'sendMessage']);
     Route::post('/get-messages', [MasafrController::class, 'getMessages']);
+    Route::post('/create-free-service', [MasafrController::class, 'createFreeService']);
 
+
+    ################ not working ############################
+    Route::post('/search-request-service', [MasafrController::class, 'searchRequestService']);
+    #############################################
     Route::post('/logout', [MasafrController::class, 'logout']);
 });

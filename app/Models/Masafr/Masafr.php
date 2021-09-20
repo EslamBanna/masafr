@@ -40,6 +40,7 @@ class Masafr extends Authenticatable implements JWTSubject
         'email_notifications',
         'balance'
     ];
+    protected $hidden = ['password'];
 
 
     public function getJWTIdentifier()

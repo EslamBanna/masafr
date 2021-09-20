@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Masafr;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common\AdminNotifiactions;
+use App\Models\Masafr\FreeService;
+use App\Models\Masafr\FreeServicePlace;
 use App\Models\Masafr\Masafr;
 use App\Models\Masafr\TripDays;
 use App\Models\Masafr\Trips;
@@ -357,7 +359,110 @@ class MasafrController extends Controller
             }
             return $this->returnData('data', $userRequestService);
         } catch (\Exception $e) {
-            return $this->returnError('201', $e->getMessage());
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function searchRequestService(Request $request)
+    {
+        try {
+            $rules = [
+                'type_of_service' => 'required|numeric',
+                'from_place' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $requestSerices = null;
+            if ($request->type_of_service == 0) {
+                if (!$request->has('to_place')) {
+                    return $this->returnError('202', 'fail');
+                }
+                $requestSerices = RequestService::where('from_place', 'like', '%' . $request->from_place . '%')
+                    ->where('to_place', 'like', '%' . $request->to_place . '%')
+                    ->get();
+            } else if ($request->type_of_service == 1) {
+                $requestSerices = RequestService::where('from_place', 'like', '%' . $request->from_place . '%')
+                    ->where('to_place', 'like', '%' . $request->to_place . '%')
+                    ->where('type_of_trips', 4)
+                    ->get();
+            } else if ($request->type_of_service == 2) {
+                $trips = RequestService::where([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['type_of_trips', '=', 2],
+                    ['type_of_services', '=', 3]
+                ])->orWhere([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['type_of_trips', '=', 2],
+                    ['type_of_services', '=', 4]
+                ])->orWhere([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['type_of_trips', '=', 2],
+                    ['type_of_services', '=', 5]
+                ])->orWhere([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['type_of_trips', '=', 2],
+                    ['type_of_services', '=', 6]
+                ])->get();
+            } else if ($request->type_of_service == 3) {
+                $requestSerices = RequestService::where('from_place', 'like', '%' . $request->from_place . '%')
+                    ->where('to_place', 'like', '%' . $request->to_place . '%')
+                    ->where('type_of_trips', 4)
+                    ->get();
+            } else if ($request->type_of_service == 4) {
+            } else if ($request->type_of_service == 5) {
+                $requestSerices = RequestService::where('from_place', 'like', '%' . $request->from_place . '%')
+                    ->where('to_place', 'like', '%' . $request->to_place . '%')
+                    ->where('only_women', 1)
+                    ->get();
+            }
+
+            return $this->returnData('data', $requestSerices);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+
+    public function createFreeService(Request $request)
+    {
+        // return $request;
+        try {
+            DB::beginTransaction();
+            $rules = [
+                'masafr_id' => 'required|numeric|exists:masafr,id',
+                'type' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            $freeServiceID = FreeService::insertGetId([
+                'masafr_id' => $request->masafr_id,
+                'type' => $request->type,
+                'photo' => $request->photo,
+                'description' => $request->description
+            ]);
+            foreach ($request['places'] as $place) {
+                FreeServicePlace::create([
+                    'free_service_id' => $freeServiceID,
+                    'place' => $place['place']
+                ]);
+            }
+            // FreeServicePlace::insert($request['places']);
+            DB::commit();
+            return $this->returnSuccessMessage('success');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $this->returnError('201', 'fail');
         }
     }
 }

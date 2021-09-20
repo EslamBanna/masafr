@@ -1,0 +1,18 @@
+first type
+
+{
+    "type_of_trips": 0,
+    "from_place": "tanta",
+    "only_women": 0,
+    "to_place": "alex"
+}
+
+
+##########################################
+second type
+
+{
+    "type_of_trips": 1,
+    "from_place": "tanta",
+    "only_women": 0
+}

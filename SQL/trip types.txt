@@ -12,16 +12,16 @@ first trip
        "to_place": "alex",
        "to_longitude": "50.635154",
        "to_latitude": "45.353",
-       "start_date": "2021-09-18 22:04:55",
-       "end_date": "2021-09-30 22:04:55",
+       "start_date": "2021-09-18",
+       "end_date": "2021-09-30",
        "trip_ways":[
         {
             "place": "kom hammada",
-            "time": "2021-09-18 22:04:55"
+            "time": "2021-09-18"
         },
         {
             "place": "damanhour",
-            "time": "2021-09-19 22:04:55"
+            "time": "2021-09-19"
         }
     ]
 }
@@ -44,11 +44,11 @@ seconde trip
        "trip_ways":[
         {
             "place": "kom hammada",
-            "time": "2021-09-18 22:04:55"
+            "time": "2021-09-18"
         },
         {
             "place": "damanhour",
-            "time": "2021-09-19 22:04:55"
+            "time": "2021-09-19"
         }
     ],
     "trip_days":[
@@ -115,15 +115,15 @@ test
     "trip_ways":[
         {
             "place": "kom hammada",
-            "time": "2021-09-18 22:04:55"
+            "time": "2021-09-18"
         },
         {
             "place": "damanhour",
-            "time": "2021-09-18 22:04:55"
+            "time": "2021-09-18"
         },
         {
             "place": "alex",
-            "time": "2021-09-18 22:04:55"
+            "time": "2021-09-18"
         }
     ]
 }

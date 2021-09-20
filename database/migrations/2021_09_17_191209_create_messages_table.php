@@ -15,7 +15,7 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->boolean('sender_type')->comment('0 from user to masafr, 1 from masafr to user');
+            $table->integer('sender_type')->comment('0 from user to masafr, 1 from masafr to user, and else is th chat notifications');
             $table->integer('user_id');
             $table->integer('masafr_id');
             $table->text('subject')->nullable();

@@ -1,0 +1,18 @@
+{
+    "masafr_id": 1,
+    "type": "توصيل علاج",
+    "photo": "abc.png",
+    "description": "test description",
+    "places":
+    [
+            {
+            "place": "cairo"
+            },
+            {
+            "place": "tanta"  
+            },
+            {
+            "place": "kom hammada"  
+            }
+    ]
+}

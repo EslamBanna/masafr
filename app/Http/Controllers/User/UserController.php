@@ -159,7 +159,6 @@ class UserController extends Controller
 
     public function createRequestService(Request $request)
     {
-        // return $request;
         try {
             $rules = [
                 'user_id' => 'required|exists:users,id',
@@ -207,6 +206,53 @@ class UserController extends Controller
                 return $this->returnError('202', 'fail');
             }
             return $this->returnData('data', $trip);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function searchTrips(Request $request)
+    {
+        try {
+            $rules = [
+                'type_of_trips' => 'required|boolean',
+                'from_place' => 'required',
+                'only_women' => 'required|boolean'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            $trips = null;
+            if ($request->type_of_trips == 0) {
+                if (!$request->has('to_place')) {
+                    return $this->returnError('202', 'fail');
+                }
+
+                $trips = Trips::where([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['only_women', '=', $request->only_women],
+                    ['type_of_trips', '=', 1]
+                ])->orWhere([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['only_women', '=', $request->only_women],
+                    ['type_of_trips', '=', 2]
+                ])->orWhere([
+                    ['from_place', 'like', '%' . $request->from_place . '%'],
+                    ['to_place', 'like', '%' . $request->to_place . '%'],
+                    ['only_women', '=', $request->only_women],
+                    ['type_of_trips', '=', 3]
+                ])->get();
+            } else if ($request->type_of_trips == 1) {
+                $trips = Trips::where('from_place', 'like', '%' . $request->from_place . '%')
+                    ->where('only_women', $request->only_women)
+                    ->where('type_of_trips', 4)
+                    ->get();
+            }
+            return $this->returnData('data', $trips);
         } catch (\Exception $e) {
             return $this->returnError('201', $e->getMessage());
         }
