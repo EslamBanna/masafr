@@ -82,7 +82,7 @@
 				"header": [
 					{
 						"key": "authToken",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA2MjE3MywiZXhwIjoxNjMyMDY1NzczLCJuYmYiOjE2MzIwNjIxNzMsImp0aSI6IlpqcFl3Z2ZSenJJdnJwOUciLCJzdWIiOjMsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Ex_zk7Xvrt0ncyNiaWlBFWsRzQgR63MBvWG05Rb_KRo",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjE2MTMzNywiZXhwIjoxNjMyMTY0OTM3LCJuYmYiOjE2MzIxNjEzMzcsImp0aSI6IlNTb25qR1VaOWFaSzdRQWEiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.Nl8tXqAge1-Sm6QgLTFLfMDUepZkS6WvXcWuNcv6qpI",
 						"type": "text"
 					}
 				],
@@ -109,7 +109,7 @@
 				"header": [
 					{
 						"key": "authToken",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDc4OTc0LCJleHAiOjE2MzIwODI1NzQsIm5iZiI6MTYzMjA3ODk3NCwianRpIjoib1NGTlpIa2M3ZjdYU2YxUSIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.GKXPsdFW43oY1k7176hd4AjN-ybeteq7V0NK3OgeuYc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMTYxNDM0LCJleHAiOjE2MzIxNjUwMzQsIm5iZiI6MTYzMjE2MTQzNCwianRpIjoiTm1MM1FLckh1SFo4NU1yaiIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.8azaOy5Wy9n5SA62tBYErGd5uc0Fci8tcJKmmOTwZqs",
 						"type": "text"
 					}
 				],
@@ -494,7 +494,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/user/make-comment?type=0&user_id=2&masafr_id=1&subject=he is very good user",
+					"raw": "localhost:8000/api/auth/user/make-comment?type=0&user_id=1&masafr_id=1&subject=he is very good user3",
 					"host": [
 						"localhost"
 					],
@@ -512,7 +512,7 @@
 						},
 						{
 							"key": "user_id",
-							"value": "2"
+							"value": "1"
 						},
 						{
 							"key": "masafr_id",
@@ -520,7 +520,7 @@
 						},
 						{
 							"key": "subject",
-							"value": "he is very good user"
+							"value": "he is very good user3"
 						}
 					]
 				}
@@ -539,7 +539,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/masafr/make-comment?type=1&user_id=2&masafr_id=1&subject=he is very good user",
+					"raw": "localhost:8000/api/auth/masafr/make-comment?type=1&user_id=1&masafr_id=1&subject=he is very good user4",
 					"host": [
 						"localhost"
 					],
@@ -557,7 +557,7 @@
 						},
 						{
 							"key": "user_id",
-							"value": "2"
+							"value": "1"
 						},
 						{
 							"key": "masafr_id",
@@ -565,7 +565,7 @@
 						},
 						{
 							"key": "subject",
-							"value": "he is very good user"
+							"value": "he is very good user4"
 						}
 					]
 				}
@@ -840,7 +840,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/user/make-complain?type=0&user_id=1&masafr_id=1&subject=he take money5 from me i'am user",
+					"raw": "localhost:8000/api/auth/user/make-complain?type=0&user_id=1&masafr_id=1&subject=he take money5 from me i'am user2",
 					"host": [
 						"localhost"
 					],
@@ -866,7 +866,7 @@
 						},
 						{
 							"key": "subject",
-							"value": "he take money5 from me i'am user"
+							"value": "he take money5 from me i'am user2"
 						}
 					]
 				}
@@ -885,7 +885,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/user/make-complain?type=1&user_id=1&masafr_id=1&subject=he doesnot give me any thing ia'm masafr2",
+					"raw": "localhost:8000/api/auth/user/make-complain?type=1&user_id=1&masafr_id=1&subject=he doesnot give me any thing ia'm masafr3",
 					"host": [
 						"localhost"
 					],
@@ -911,7 +911,7 @@
 						},
 						{
 							"key": "subject",
-							"value": "he doesnot give me any thing ia'm masafr2"
+							"value": "he doesnot give me any thing ia'm masafr3"
 						}
 					]
 				}
@@ -999,13 +999,13 @@
 				"header": [
 					{
 						"key": "authToken",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkwNTUwLCJleHAiOjE2MzIwOTQxNTAsIm5iZiI6MTYzMjA5MDU1MCwianRpIjoidUJldGg3Y0tpUjd4RWxJQyIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.1VLznyUKZMTGCEW4wSR5jnKeGPr27LFGgXgYYKfYKdE",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjE0MTI4MywiZXhwIjoxNjMyMTQ0ODgzLCJuYmYiOjE2MzIxNDEyODMsImp0aSI6IkxDdkc4N2dzMzNPUHFBRHUiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.c9V8OIOohkZMd-5btUxkon-9NS7wxp0k5djTMdHfho4",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n       \"masafr_id\": 1,\r\n       \"type_of_trips\": 4,\r\n       \"type_of_services\": 7,\r\n       \"from_place\": \"shibin\",\r\n       \"from_longitude\": \"12.3651\",\r\n       \"from_latitude\": \"30.25315\",\r\n       \"description\": \"test disciption\"\r\n}",
+					"raw": "{\r\n       \"masafr_id\": 1,\r\n       \"type_of_trips\": 4,\r\n       \"type_of_services\": 7,\r\n       \"from_place\": \"shibin\",\r\n       \"from_longitude\": \"12.3651\",\r\n       \"from_latitude\": \"30.25315\",\r\n       \"description\": \"test disciption\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1110,7 +1110,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/user/get-trip?id=1",
+					"raw": "localhost:8000/api/auth/user/get-trip?id=4",
 					"host": [
 						"localhost"
 					],
@@ -1124,7 +1124,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "4"
 						}
 					]
 				}
@@ -1152,6 +1152,75 @@
 							"key": "paginateCount",
 							"value": "10",
 							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user make request service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA4ODI2MCwiZXhwIjoxNjMyMDkxODYwLCJuYmYiOjE2MzIwODgyNjAsImp0aSI6ImV5Q2ZkWFRvMlAxNDVhSFkiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.sHbdjbruzNxwButZJIeDJNZCg08i4VjST7EXQQeQhag",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"type_of_trips\": 4,\r\n    \"type_of_services\": 3,\r\n    \"from_place\": \"tanta\",\r\n    \"from_longitude\": \"12.255\",\r\n    \"from_latitude\": \"15.3245\",\r\n    \"max_day\": \"2021-09-19\",\r\n    \"photo\": \"abcd.png\",\r\n    \"description\": \"nonee\",\r\n    \"only_women\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/auth/user/create-request-service",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"create-request-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user request service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkwMjIxLCJleHAiOjE2MzIwOTM4MjEsIm5iZiI6MTYzMjA5MDIyMSwianRpIjoidmJ5T3hyeEJnNmFNU01jOSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.TMBygBZ4bq2IWqFVEnW9GxDJuac9c-X8aB-Fw6LCuaM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/get-request-service?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"get-request-service"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
 						}
 					]
 				}
@@ -1462,75 +1531,6 @@
 			"response": []
 		},
 		{
-			"name": "user make request service",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authToken",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjA4ODI2MCwiZXhwIjoxNjMyMDkxODYwLCJuYmYiOjE2MzIwODgyNjAsImp0aSI6ImV5Q2ZkWFRvMlAxNDVhSFkiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.sHbdjbruzNxwButZJIeDJNZCg08i4VjST7EXQQeQhag",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": 1,\r\n    \"type_of_trips\": 4,\r\n    \"type_of_services\": 3,\r\n    \"from_place\": \"tanta\",\r\n    \"from_longitude\": \"12.255\",\r\n    \"from_latitude\": \"15.3245\",\r\n    \"max_day\": \"2021-09-19\",\r\n    \"photo\": \"abcd.png\",\r\n    \"description\": \"nonee\",\r\n    \"only_women\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8000/api/auth/user/create-request-service",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"auth",
-						"user",
-						"create-request-service"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get user request service",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authToken",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkwMjIxLCJleHAiOjE2MzIwOTM4MjEsIm5iZiI6MTYzMjA5MDIyMSwianRpIjoidmJ5T3hyeEJnNmFNU01jOSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.TMBygBZ4bq2IWqFVEnW9GxDJuac9c-X8aB-Fw6LCuaM",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:8000/api/auth/masafr/get-request-service?id=3",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"auth",
-						"masafr",
-						"get-request-service"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "3"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "user send message",
 			"request": {
 				"method": "POST",
@@ -1542,7 +1542,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/user/send-message?sender_type=0&user_id=1&masafr_id=1&related_trip=1&related_request_service=2&subject=sad&attach=:(",
+					"raw": "localhost:8000/api/auth/user/send-message?sender_type=0&user_id=1&masafr_id=1&related_trip=1&related_request_service=1&subject=sad2&attach=:(2",
 					"host": [
 						"localhost"
 					],
@@ -1572,15 +1572,15 @@
 						},
 						{
 							"key": "related_request_service",
-							"value": "2"
+							"value": "1"
 						},
 						{
 							"key": "subject",
-							"value": "sad"
+							"value": "sad2"
 						},
 						{
 							"key": "attach",
-							"value": ":("
+							"value": ":(2"
 						}
 					]
 				}
@@ -1599,7 +1599,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:8000/api/auth/masafr/send-message?sender_type=1&user_id=1&masafr_id=1&related_trip=1&related_request_service=2&subject=welcome bro&attach=:)",
+					"raw": "localhost:8000/api/auth/masafr/send-message?sender_type=1&user_id=1&masafr_id=1&related_trip=1&related_request_service=1&subject=welcome bro2&attach=:)2",
 					"host": [
 						"localhost"
 					],
@@ -1629,15 +1629,15 @@
 						},
 						{
 							"key": "related_request_service",
-							"value": "2"
+							"value": "1"
 						},
 						{
 							"key": "subject",
-							"value": "welcome bro"
+							"value": "welcome bro2"
 						},
 						{
 							"key": "attach",
-							"value": ":)"
+							"value": ":)2"
 						}
 					]
 				}
@@ -1645,7 +1645,7 @@
 			"response": []
 		},
 		{
-			"name": "get messages",
+			"name": "masafr get messages",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1675,6 +1675,184 @@
 						{
 							"key": "masafr_id",
 							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user get messages",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMDkyNzE5LCJleHAiOjE2MzIwOTYzMTksIm5iZiI6MTYzMjA5MjcxOSwianRpIjoiVnJSQmw4WENROTF2aFJnaSIsInN1YiI6MiwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9._GnwulU2-aliWFothCDiMgtXAFRTuvSnOn3mxM-gpmw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/get-messages?user_id=1&masafr_id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"get-messages"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "1"
+						},
+						{
+							"key": "masafr_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search a trip",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC91c2VyXC9sb2dpbiIsImlhdCI6MTYzMjE0MTI4MywiZXhwIjoxNjMyMTQ0ODgzLCJuYmYiOjE2MzIxNDEyODMsImp0aSI6IkxDdkc4N2dzMzNPUHFBRHUiLCJzdWIiOjEsInBydiI6ImI5MTI3OTk3OGYxMWFhN2JjNTY3MDQ4N2ZmZjAxZTIyODI1M2ZlNDgifQ.c9V8OIOohkZMd-5btUxkon-9NS7wxp0k5djTMdHfho4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/search-trips?type_of_trips=0&from_place=tanta&only_women=1&to_place=alex",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"search-trips"
+					],
+					"query": [
+						{
+							"key": "type_of_trips",
+							"value": "0"
+						},
+						{
+							"key": "from_place",
+							"value": "tanta"
+						},
+						{
+							"key": "only_women",
+							"value": "1"
+						},
+						{
+							"key": "to_place",
+							"value": "alex"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create free service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authToken",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9tYXNhZnJcL2xvZ2luIiwiaWF0IjoxNjMyMTUyMTk1LCJleHAiOjE2MzIxNTU3OTUsIm5iZiI6MTYzMjE1MjE5NSwianRpIjoidTR3aWh4T2RhaHNzdVlqZCIsInN1YiI6MSwicHJ2IjoiOGYwMjM5NzFiMWQwNzkyNmJkYTAwNzliZWViOWE3ZDk1NDRkMjU3NSJ9.lCyD1UThKSWnOe6oUWyp0ELJ0k7K9bM6rHspkk0XuZ0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"masafr_id\": 1,\r\n    \"type\": \"توصيل علاج\",\r\n    \"photo\": \"abc.png\",\r\n    \"description\": \"test description\",\r\n    \"places\":\r\n    [\r\n            {\r\n            \"place\": \"cairo\"\r\n            },\r\n            {\r\n            \"place\": \"tanta\"  \r\n            },\r\n            {\r\n            \"place\": \"kom hammada\"  \r\n            }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/auth/masafr/create-free-service",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"masafr",
+						"create-free-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all free services",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/all-free-services",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"all-free-services"
+					],
+					"query": [
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search free service",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/auth/user/search-free-service?type=م",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"user",
+						"search-free-service"
+					],
+					"query": [
+						{
+							"key": "paginateCount",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "م"
 						}
 					]
 				}

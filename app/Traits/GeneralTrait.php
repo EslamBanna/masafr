@@ -42,12 +42,17 @@ trait GeneralTrait
                 $code = $this->returnCodeAccordingToInput($validator);
                 return $this->returnValidationError($code, $validator);
             }
+
+            $file_name_attachment = null;
+            if ($request->hasFile('attachment')) {
+                $file_name_attachment  = $this->saveImage($request->attachment, 'customers_service');
+            }
             CustomerService::create([
                 'email' => $request->email,
                 'name' => $request->name,
                 'body' => $request->body,
                 'title' => $request->title,
-                'attachment' => $request->attachment,
+                'attachment' => $file_name_attachment
             ]);
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {
@@ -256,11 +261,17 @@ trait GeneralTrait
                     'masafr_id' => $request->masafr_id,
                     'status' => 1
                 ]);
+
+                $file_name_attach = null;
+                if ($request->hasFile('attachment')) {
+                    $file_name_attach  = $this->saveImage($request->attachment, 'complains');
+                }
+
                 ComplainList::create([
                     'complain_id' => $complainID,
                     'type' => $request->type,
                     'subject' => $request->subject,
-                    'attach' => $request->attach
+                    'attach' => $file_name_attach
                 ]);
                 DB::commit();
                 return $this->returnSuccessMessage('success');
@@ -401,6 +412,11 @@ trait GeneralTrait
                 return $this->returnValidationError($code, $validator);
             }
 
+            $file_name_attach = null;
+            if ($request->hasFile('attach')) {
+                $file_name_attach  = $this->saveImage($request->attach, 'messages');
+            }
+
             Message::create([
                 'sender_type' => $request->sender_type,
                 'user_id' => $request->user_id,
@@ -408,7 +424,7 @@ trait GeneralTrait
                 'related_trip' => $request->related_trip,
                 'related_request_service' => $request->related_request_service,
                 'subject' => $request->subject,
-                'attach' => $request->attach
+                'attach' => $file_name_attach
             ]);
 
             return $this->returnSuccessMessage('success');
@@ -431,10 +447,10 @@ trait GeneralTrait
             }
 
             $messages = Message::with(['masafr' => function ($q) {
-                $q->select('id','name', 'photo','id');
+                $q->select('id', 'name', 'photo', 'id');
             }])
                 ->with(['user' => function ($q) {
-                    $q->select('id','name', 'photo');
+                    $q->select('id', 'name', 'photo');
                 }])
                 ->where('user_id', $request->user_id)
                 ->where('masafr_id', $request->masafr_id)

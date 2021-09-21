@@ -82,6 +82,11 @@ class MasafrController extends Controller
                 return $this->returnValidationError($code, $validator);
             }
 
+            $file_name = null;
+            if ($request->hasFile('photo')) {
+                $file_name  = $this->saveImage($request->photo, 'masafrs');
+            }
+
             $masafrID =  Masafr::insertGetId([
                 'email' => $request->email,
                 'country_code' => $request->country_code,
@@ -89,7 +94,7 @@ class MasafrController extends Controller
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'password' => bcrypt($request->password),
-                'photo' => $request->photo,
+                'photo' => $file_name,
             ]);
             return $this->returnData('masafr id', $masafrID);
         } catch (\Exception $e) {
@@ -108,17 +113,40 @@ class MasafrController extends Controller
             if (!$masafr->active) {
                 return $this->returnError('202', 'active first');
             }
+
+            $file_name_id_Photo = null;
+            $file_name_driving_license_photo = null;
+            $file_name_car_image_east = null;
+            $file_name_car_image_west = null;
+            $file_name_car_image_north = null;
+
+            if ($request->hasFile('id_Photo')) {
+                $file_name_id_Photo  = $this->saveImage($request->id_Photo, 'masafrs_id');
+            }
+            if ($request->hasFile('driving_license_photo')) {
+                $file_name_driving_license_photo  = $this->saveImage($request->driving_license_photo, 'driving_licenses');
+            }
+            if ($request->hasFile('car_image_east')) {
+                $file_name_car_image_east  = $this->saveImage($request->car_image_east, 'cars');
+            }
+            if ($request->hasFile('car_image_west')) {
+                $file_name_car_image_west  = $this->saveImage($request->car_image_west, 'cars');
+            }
+            if ($request->hasFile('car_image_north')) {
+                $file_name_car_image_north  = $this->saveImage($request->car_image_north, 'cars');
+            }
+
             $masafr->update([
                 'national_id_number' => $request->national_id_number,
                 'nationality' => $request->nationality,
                 'car_name' => $request->car_name,
                 'car_model' => $request->car_model,
                 'car_number' => $request->car_number,
-                'id_Photo' => $request->id_Photo,
-                'driving_license_photo' => $request->driving_license_photo,
-                'car_image_east' => $request->car_image_east,
-                'car_image_west' => $request->car_image_west,
-                'car_image_north' => $request->car_image_north
+                'id_Photo' => $file_name_id_Photo,
+                'driving_license_photo' => $file_name_driving_license_photo,
+                'car_image_east' => $file_name_car_image_east,
+                'car_image_west' => $file_name_car_image_west,
+                'car_image_north' => $file_name_car_image_north
             ]);
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {
@@ -164,15 +192,24 @@ class MasafrController extends Controller
             if (!$user) {
                 return $this->returnError('202', 'fail');
             }
+
+            $file_name_id_Photo = null;
+            $file_name_photo = null;
+            if ($request->hasFile('id_Photo')) {
+                $file_name_id_Photo  = $this->saveImage($request->id_Photo, 'masafrs_id');
+            }
+            if ($request->hasFile('photo')) {
+                $file_name_photo  = $this->saveImage($request->photo, 'masafrs');
+            }
             $user->update([
-                'id_Photo' => $request->id_Photo ?? $user->id_Photo,
+                'id_Photo' => $file_name_id_Photo ?? $user->id_Photo,
                 'national_id_number' => $request->national_id_number ?? $user->national_id_number,
                 'phone' => $request->phone ?? $user->phone,
                 'email' => $request->email ?? $user->email,
                 'name' => $request->name ?? $user->name,
                 'password' => bcrypt($request->password) ?? $user->password,
                 'gender' => $request->gender ?? $user->gender,
-                'photo' => $request->photo ?? $user->photo,
+                'photo' => $file_name_photo ?? $user->photo,
                 'country_code' => $request->country_code ?? $user->country_code,
                 'rate' => $request->rate ?? $user->rate,
                 'validation_code' => $request->validation_code ?? $user->validation_code,
@@ -445,10 +482,15 @@ class MasafrController extends Controller
                 return $this->returnValidationError($code, $validator);
             }
 
+            $file_name_photo = null;
+            if ($request->hasFile('photo')) {
+                $file_name_photo  = $this->saveImage($request->photo, 'free_services');
+            }
+
             $freeServiceID = FreeService::insertGetId([
                 'masafr_id' => $request->masafr_id,
                 'type' => $request->type,
-                'photo' => $request->photo,
+                'photo' => $file_name_photo,
                 'description' => $request->description
             ]);
             foreach ($request['places'] as $place) {

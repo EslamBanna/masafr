@@ -81,13 +81,17 @@ class UserController extends Controller
                 $code = $this->returnCodeAccordingToInput($validator);
                 return $this->returnValidationError($code, $validator);
             }
+            $file_name = null;
+            if ($request->hasFile('photo')) {
+                $file_name  = $this->saveImage($request->photo, 'users');
+            }
             $userID =  User::insertGetId([
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'password' => bcrypt($request->password),
-                'photo' => $request->photo,
+                'photo' => $file_name,
                 'country_code' => $request->country_code
             ]);
             return $this->returnData('user id', $userID);
@@ -132,15 +136,23 @@ class UserController extends Controller
             if (!$user) {
                 return $this->returnError('202', 'fail');
             }
+            $file_name_id_Photo = null;
+            $file_name_photo = null;
+            if ($request->hasFile('id_Photo')) {
+                $file_name_id_Photo  = $this->saveImage($request->id_Photo, 'users_id');
+            }
+            if ($request->hasFile('photo')) {
+                $file_name_photo  = $this->saveImage($request->photo, 'user');
+            }
             $user->update([
-                'id_Photo' => $request->id_Photo ?? $user->id_Photo,
+                'id_Photo' => $file_name_id_Photo ?? $user->id_Photo,
                 'national_id_number' => $request->national_id_number ?? $user->national_id_number,
                 'phone' => $request->phone ?? $user->phone,
                 'email' => $request->email ?? $user->email,
                 'name' => $request->name ?? $user->name,
                 'password' => bcrypt($request->password) ?? $user->password,
                 'gender' => $request->gender ?? $user->gender,
-                'photo' => $request->photo ?? $user->photo,
+                'photo' => $file_name_photo ?? $user->photo,
                 'country_code' => $request->country_code ?? $user->country_code,
                 'rate' => $request->rate ?? $user->rate,
                 'validation_code' => $request->validation_code ?? $user->validation_code,
@@ -172,6 +184,10 @@ class UserController extends Controller
                 $code = $this->returnCodeAccordingToInput($validator);
                 return $this->returnValidationError($code, $validator);
             }
+            $file_name = null;
+            if ($request->hasFile('photo')) {
+                $file_name  = $this->saveImage($request->photo, 'request_services');
+            }
 
             RequestService::create([
                 'user_id' => $request->user_id,
@@ -185,7 +201,7 @@ class UserController extends Controller
                 'to_latitude' => $request->to_latitude,
                 'max_day' => $request->max_day,
                 'delivery_to' => $request->delivery_to,
-                'photo' => $request->photo,
+                'photo' => $file_name,
                 'description' => $request->description,
                 'only_women' => $request->only_women,
                 'have_insurance' => $request->have_insurance,
