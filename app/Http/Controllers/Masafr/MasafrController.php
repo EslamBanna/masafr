@@ -353,7 +353,7 @@ class MasafrController extends Controller
     public function getRequestService(Request $request)
     {
         try {
-            $userRequestService = RequestService::find($request->id);
+            $userRequestService = RequestService::with('user')->find($request->id);
             if (!$userRequestService) {
                 return $this->returnError('202', 'fail');
             }

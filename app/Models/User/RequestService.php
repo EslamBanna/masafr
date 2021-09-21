@@ -31,4 +31,8 @@ class RequestService extends Model
         'type_of_car',
         'on_progress'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

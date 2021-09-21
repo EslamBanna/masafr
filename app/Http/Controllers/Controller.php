@@ -18,7 +18,10 @@ class Controller extends BaseController
     public function getAllTrips(Request $request)
     {
         try {
-            $trips = Trips::paginate($request->paginateCount);
+            $trips = Trips::with('masafr')
+                ->with('ways')
+                ->with('days')
+                ->paginate($request->paginateCount);
             return $this->returnData('data', $trips);
         } catch (\Exception $e) {
             return $this->returnError('201', 'fail');
@@ -28,10 +31,14 @@ class Controller extends BaseController
     public function getAllRequestServices(Request $request)
     {
         try {
-            $trips = RequestService::paginate($request->paginateCount);
+            $trips = RequestService::with('user')->paginate($request->paginateCount);
             return $this->returnData('data', $trips);
         } catch (\Exception $e) {
             return $this->returnError('201', 'fail');
         }
     }
 }
+
+
+
+// $file_name  = $this->saveImage($request->photo, 'user');

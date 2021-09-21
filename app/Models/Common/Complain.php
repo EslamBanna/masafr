@@ -12,4 +12,8 @@ class Complain extends Model
     protected $table = 'complains';
     protected $fillable = ['type', 'user_id','masafr_id','subject','attach','status'];
 
+    public function complainList(){
+        return $this->hasMany(ComplainList::class,'complain_id','id');
+    }
+
 }

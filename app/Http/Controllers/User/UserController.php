@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common\AdminNotifiactions;
+use App\Models\Masafr\FreeService;
 use App\Models\Masafr\Trips;
 use App\Models\User\RequestService;
 use App\Models\User\User;
@@ -194,20 +195,23 @@ class UserController extends Controller
             ]);
             return $this->returnSuccessMessage('success');
         } catch (\Exception $e) {
-            return $this->returnError('E205', $e->getMessage());
+            return $this->returnError('E205', 'fail');
         }
     }
 
     public function getTrip(Request $request)
     {
         try {
-            $trip = Trips::find($request->id);
+            $trip = Trips::with('masafr')
+                ->with('ways')
+                ->with('days')
+                ->find($request->id);
             if (!$trip) {
                 return $this->returnError('202', 'fail');
             }
             return $this->returnData('data', $trip);
         } catch (\Exception $e) {
-            return $this->returnError('201', 'fail');
+            return $this->returnError('201', $e->getMessage());
         }
     }
 
@@ -230,31 +234,62 @@ class UserController extends Controller
                     return $this->returnError('202', 'fail');
                 }
 
-                $trips = Trips::where([
-                    ['from_place', 'like', '%' . $request->from_place . '%'],
-                    ['to_place', 'like', '%' . $request->to_place . '%'],
-                    ['only_women', '=', $request->only_women],
-                    ['type_of_trips', '=', 1]
-                ])->orWhere([
-                    ['from_place', 'like', '%' . $request->from_place . '%'],
-                    ['to_place', 'like', '%' . $request->to_place . '%'],
-                    ['only_women', '=', $request->only_women],
-                    ['type_of_trips', '=', 2]
-                ])->orWhere([
-                    ['from_place', 'like', '%' . $request->from_place . '%'],
-                    ['to_place', 'like', '%' . $request->to_place . '%'],
-                    ['only_women', '=', $request->only_women],
-                    ['type_of_trips', '=', 3]
-                ])->get();
+                $trips = Trips::with('masafr')
+                    ->with('ways')
+                    ->with('days')
+                    ->where([
+                        ['from_place', 'like', '%' . $request->from_place . '%'],
+                        ['to_place', 'like', '%' . $request->to_place . '%'],
+                        ['only_women', '=', $request->only_women],
+                        ['type_of_trips', '=', 1]
+                    ])->orWhere([
+                        ['from_place', 'like', '%' . $request->from_place . '%'],
+                        ['to_place', 'like', '%' . $request->to_place . '%'],
+                        ['only_women', '=', $request->only_women],
+                        ['type_of_trips', '=', 2]
+                    ])->orWhere([
+                        ['from_place', 'like', '%' . $request->from_place . '%'],
+                        ['to_place', 'like', '%' . $request->to_place . '%'],
+                        ['only_women', '=', $request->only_women],
+                        ['type_of_trips', '=', 3]
+                    ])->get();
             } else if ($request->type_of_trips == 1) {
-                $trips = Trips::where('from_place', 'like', '%' . $request->from_place . '%')
+                $trips = Trips::with('masafr')
+                    ->with('ways')
+                    ->with('days')
+                    ->where('from_place', 'like', '%' . $request->from_place . '%')
                     ->where('only_women', $request->only_women)
                     ->where('type_of_trips', 4)
                     ->get();
             }
             return $this->returnData('data', $trips);
         } catch (\Exception $e) {
-            return $this->returnError('201', $e->getMessage());
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function getAllFreeServices(Request $request)
+    {
+        try {
+            $freeServices = FreeService::with('masafr')
+                ->with('ways')
+                ->paginate($request->paginateCount);
+            return $this->returnData('data', $freeServices);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
+    public function searchFreeService(Request $request)
+    {
+        try {
+            $freeServices = FreeService::with('masafr')
+                ->with('ways')
+                ->where('type', 'like', '%' . $request->type . '%')
+                ->paginate($request->paginateCount);
+            return $this->returnData('data', $freeServices);
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
         }
     }
 }

@@ -41,6 +41,54 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'users' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'cars' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'complains' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'customers_service' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'free_services' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'masafrs' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'messages' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'request_services' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/images/users/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

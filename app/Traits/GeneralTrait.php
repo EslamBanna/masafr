@@ -24,8 +24,8 @@ trait GeneralTrait
     {
         $photo->store('/', $folder);
         $filename = $photo->hashName();
-        $path = 'images/' . $folder . '/' . $filename;
-        return $path;
+        // $path = 'images/' . $folder . '/' . $filename;
+        return $filename;
     }
 
     public function CustomerService(Request $request)
@@ -183,12 +183,12 @@ trait GeneralTrait
             }
             // $user = auth()->guard('masafr-api')->user()['id'];
             if ($request->type == 0) {
-                $comments = Comment::where('type', 0)
+                $comments = Comment::with('User')->where('type', 0)
                     ->where('masafr_id', $request->pesron_id)
                     ->get();
                 return $this->returnData('comments', $comments);
             }
-            $comments = Comment::where('type', 1)
+            $comments = Comment::with('Masafr')->where('type', 1)
                 ->where('user_id', $request->pesron_id)
                 ->get();
             return $this->returnData('comments', $comments);
@@ -301,7 +301,7 @@ trait GeneralTrait
             if (!$masafr) {
                 return $this->returnError('202', 'fail');
             }
-            $complain = Complain::where('user_id', $request->user_id)
+            $complain = Complain::with('complainList')->where('user_id', $request->user_id)
                 ->where('masafr_id', $request->masafr_id)
                 ->first();
             return $this->returnData('data', $complain);
@@ -430,11 +430,19 @@ trait GeneralTrait
                 return $this->returnValidationError($code, $validator);
             }
 
-            $messages = Message::where('user_id', $request->user_id)
+            $messages = Message::with(['masafr' => function ($q) {
+                $q->select('id','name', 'photo','id');
+            }])
+                ->with(['user' => function ($q) {
+                    $q->select('id','name', 'photo');
+                }])
+                ->where('user_id', $request->user_id)
                 ->where('masafr_id', $request->masafr_id)
                 ->get();
+            // $messages->user =  $messages->user;
+            // $messages['masafr'] =  $messages->masafr;
 
-            return $this->returnData('data',$messages);
+            return $this->returnData('data', $messages);
         } catch (\Exception $e) {
             return $this->returnError('201', $e->getMessage());
         }
