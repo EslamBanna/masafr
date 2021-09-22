@@ -150,7 +150,7 @@
                         <div class="u-row"
                             style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
                             <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-image: url('images/image-10.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
+                                style="border-collapse: collapse;display: table;width: 100%;background-image: url({{asset('images/mails/verification/image-10.png')}});background-repeat: no-repeat;background-position: center top;background-color: transparent;">
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('images/image-10.png');background-repeat: no-repeat;background-position: center top;background-color: #ffffff;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
@@ -177,7 +177,7 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="images/image-6.png" alt="Image"
+                                                                            src="{{asset('images/mails/verification/image-6.png')}}" alt="Image"
                                                                             title="Image"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 24%;max-width: 139.2px;"
                                                                             width="139.2"
@@ -209,7 +209,7 @@
                         <div class="u-row"
                             style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
                             <div
-                                style="border-collapse: collapse;display: table;width: 100%;background-image: url('images/image-11.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
+                                style="border-collapse: collapse;display: table;width: 100%;background-image: url('{{asset('images/mails/verification/image-11.png')}}');background-repeat: no-repeat;background-position: center top;background-color: transparent;">
                                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-image: url('images/image-11.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"><![endif]-->
 
                                 <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
@@ -290,7 +290,7 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="images/image-8.png" alt="Image"
+                                                                            src="{{asset('images/mails/verification/image-8.png')}}" alt="Image"
                                                                             title="Image"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 600px;"
                                                                             width="600"
@@ -349,7 +349,7 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="images/image-4.png" alt="Image"
+                                                                            src="{{asset('images/mails/verification/image-4.png')}}" alt="Image"
                                                                             title="Image"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 46px;"
                                                                             width="46"
@@ -403,8 +403,7 @@
                                                             <div class="v-text-align"
                                                                 style="color: #094c54; line-height: 140%; text-align: left; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-family: helvetica, sans-serif; font-size: 30px; line-height: 42px;">Phone
-                                                                        number added</span></p>
+                                                                        style="font-family: helvetica, sans-serif; font-size: 30px; line-height: 42px;"> Email {{$email}}</span></p>
                                                             </div>
 
                                                         </td>
@@ -422,7 +421,7 @@
                                                             <div class="v-text-align"
                                                                 style="color: #666666; line-height: 140%; text-align: left; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-family: helvetica, sans-serif; font-size: 16px; line-height: 22.4px;">اهلا وسهلا عميلنا العزيز {{$user->name ?? 'hhhhhh'}}</span></p>
+                                                                        style="font-family: helvetica, sans-serif; font-size: 16px; line-height: 22.4px;"> اهلا وسهلا عميلنا العزيز {{$name}}</span></p>
                                                             </div>
 
                                                         </td>
@@ -440,7 +439,7 @@
                                                             <div class="v-text-align"
                                                                 style="color: #666666; line-height: 170%; text-align: left; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 170%;"><span
-                                                                        style="font-family: helvetica, sans-serif; font-size: 16px; line-height: 27.2px;"> هذا هو كود الحقق الخاص بك علي تطبيق توصيل مع مسافر {{$user->code}}.</span></p>
+                                                                        style="font-family: helvetica, sans-serif; font-size: 16px; line-height: 27.2px;">  هذا هو كود التحقق الخاص بك علي تطبيق توصيل مع مسافر<br /> {{$code}}</span></p>
                                                             </div>
 
                                                         </td>
@@ -653,7 +652,7 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="images/image-3.png" alt="Image"
+                                                                            src="{{asset('images/mails/verification/image-3.png')}}" alt="Image"
                                                                             title="Image"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 46px;"
                                                                             width="46"
@@ -767,7 +766,7 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="images/image-9.png" alt="Image"
+                                                                            src="{{asset('images/mails/verification/image-9.png')}}" alt="Image"
                                                                             title="Image"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 65%;max-width: 113.75px;"
                                                                             width="113.75"
@@ -905,7 +904,7 @@
                                                                                     style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                                                                                     <a href="https://rss.com/"
                                                                                         title="RSS" target="_blank">
-                                                                                        <img src="images/image-1.png"
+                                                                                        <img src="{{asset('images/mails/verification/image-1.png')}}"
                                                                                             alt="RSS" title="RSS"
                                                                                             width="32"
                                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
@@ -926,7 +925,7 @@
                                                                                     style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                                                                                     <a href="https://github.com/"
                                                                                         title="GitHub" target="_blank">
-                                                                                        <img src="images/image-5.png"
+                                                                                        <img src="{{asset('images/mails/verification/image-5.png')}}"
                                                                                             alt="GitHub" title="GitHub"
                                                                                             width="32"
                                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
@@ -947,7 +946,7 @@
                                                                                     style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
                                                                                     <a href="https://skype.com/"
                                                                                         title="Skype" target="_blank">
-                                                                                        <img src="images/image-7.png"
+                                                                                        <img src="{{asset('images/mails/verification/image-7.png')}}"
                                                                                             alt="Skype" title="Skype"
                                                                                             width="32"
                                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
@@ -969,7 +968,7 @@
                                                                                     <a href="https://telegram.org/"
                                                                                         title="Telegram"
                                                                                         target="_blank">
-                                                                                        <img src="images/image-2.png"
+                                                                                        <img src="{{asset('images/mails/verification/image-2.png')}}"
                                                                                             alt="Telegram"
                                                                                             title="Telegram" width="32"
                                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">

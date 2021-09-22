@@ -101,4 +101,4 @@ Route::group(['prefix' => 'auth/masafr', 'middleware' => ['checkAuth:masafr-api'
 
 
 
-Route::post('/test',[MasafrController::class,'generateVerficationCode']);
+// Route::get('/test',[MasafrController::class,'sendMail']);

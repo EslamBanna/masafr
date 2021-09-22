@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Masafr;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerficationMail;
 use App\Models\Common\AdminNotifiactions;
 use App\Models\Masafr\FreeService;
 use App\Models\Masafr\FreeServicePlace;
@@ -17,6 +18,7 @@ use Validator;
 use Auth;
 use JWTAuth;
 use DB;
+use Illuminate\Support\Facades\Mail;
 
 class MasafrController extends Controller
 {
@@ -99,6 +101,12 @@ class MasafrController extends Controller
                 'verification_code' => $code,
                 'photo' => $file_name
             ]);
+            if ($request->country_code == '966') {
+                //sms
+                return 'phone';
+            } else {
+                Mail::to($request->email)->send(new VerficationMail($code, $request->name, $request->email));
+            }
             return $this->returnData('masafr id', $masafrID);
         } catch (\Exception $e) {
             return $this->returnError('E205', 'fail');

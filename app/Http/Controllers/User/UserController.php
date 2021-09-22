@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Mail\VerficationMail;
 use App\Models\Common\AdminNotifiactions;
 use App\Models\Masafr\FreeService;
 use App\Models\Masafr\Trips;
@@ -12,6 +13,7 @@ use App\Traits\GeneralTrait;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use JWTAuth;
 use PDO;
 
@@ -97,6 +99,12 @@ class UserController extends Controller
                 'photo' => $file_name,
                 'country_code' => $request->country_code
             ]);
+            if ($request->country_code == '966') {
+                //sms
+                return 'phone';
+            } else {
+                Mail::to($request->email)->send(new VerficationMail($code, $request->name, $request->email));
+            }
             return $this->returnData('user id', $userID);
         } catch (\Exception $e) {
             return $this->returnError('E205', 'fail');

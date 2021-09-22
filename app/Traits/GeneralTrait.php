@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Mail\VerficationMail;
 use App\Models\Common\Comment;
 use App\Models\Common\Complain;
 use App\Models\Common\ComplainList;
@@ -19,10 +20,16 @@ use JWTAuth;
 use DB;
 
 use Carbon;
+use Illuminate\Support\Facades\Mail;
 
 trait GeneralTrait
 {
 
+    // public function sendMail()
+    // {
+
+    //     Mail::to('eslamelbanna02@gmail.com')->send(new VerficationMail('123','eslam','solo'));
+    // }
     public function generateVerficationCode(Request $request)
     {
         try {
@@ -43,10 +50,14 @@ trait GeneralTrait
                 }
 
                 $code = $user->verification_code;
+                $name = $user->name;
                 if ($user->country_code == "966") {
+                    $phone = $user->phone;
                     //sms
                 } else {
+                    $email = $user->email;
                     //email
+                    Mail::to($email)->send(new VerficationMail($code, $name, $email));
                 }
 
                 //masafr
@@ -55,12 +66,15 @@ trait GeneralTrait
                 if (!$masafr) {
                     return $this->returnError('202', 'fail');
                 }
-
+                $name = $masafr->name;
                 $code = $masafr->verification_code;
                 if ($masafr->country_code == "966") {
                     //sms
                 } else {
                     //email
+                    $email = $masafr->email;
+                    Mail::to($email)->send(new VerficationMail($code, $name, $email));
+                    // Mail::to($masafr->email)->send(new VerficationMail);
                 }
             }
         } catch (\Exception $e) {
