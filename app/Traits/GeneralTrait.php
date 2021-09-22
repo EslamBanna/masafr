@@ -47,7 +47,14 @@ trait GeneralTrait
                     ]);
                     return $this->returnSuccessMessage('success');
                 } else {
-                    return $this->returnError('data', 'fail');
+                    if($user->active_try < 3){
+                    $wrong_active_try = $user->active_try + 1;
+                    $user->update([
+                        'active_try' => $wrong_active_try
+                    ]);
+                    return $this->returnError('700', 'fail');
+                }else if($user->active_try == 3)
+                    return $this->returnError('800', 'fail');
                 }
             } else if ($request->type == 1) {
                 // masafr
@@ -62,6 +69,10 @@ trait GeneralTrait
                         'is_verified' => 1
                     ]);
                 } else {
+                    $wrong_active_try = $masafr->active_try++;
+                    $masafr->update([
+                        'active_try' =>$wrong_active_try
+                    ]);
                     return $this->returnError('data', 'fail');
                 }
             }
