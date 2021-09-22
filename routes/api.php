@@ -42,6 +42,7 @@ Route::group(['prefix' => 'masafr'], function () {
     Route::post('/create-account', [MasafrController::class, 'createMasafr']);
     Route::post('/login', [MasafrController::class, 'login']);
     Route::post('/add-masafr-info', [MasafrController::class, 'addMasafrInfo']);
+    Route::post('/varify-account', [MasafrController::class, 'varifyAccount']);
 });
 
 // Route::group(['prefix' => 'auth/user'], function () {
@@ -97,3 +98,7 @@ Route::group(['prefix' => 'auth/masafr', 'middleware' => ['checkAuth:masafr-api'
     #############################################
     Route::post('/logout', [MasafrController::class, 'logout']);
 });
+
+
+
+Route::post('/test',[MasafrController::class,'generateVerficationCode']);

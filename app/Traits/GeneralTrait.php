@@ -14,14 +14,63 @@ use App\Models\User\User;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use DateTime;
 use JWTAuth;
 use DB;
+
+use Carbon;
 
 trait GeneralTrait
 {
 
+    public function generateVerficationCode(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|boolean',
+                'id' => 'required|numeric'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+            // user
+            if ($request->type == 0) {
+                $user = User::find($request->id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+
+                $code = $user->verification_code;
+                if ($user->country_code == "966") {
+                    //sms
+                } else {
+                    //email
+                }
+
+                //masafr
+            } else if ($request->type == 1) {
+                $masafr = Masafr::find($request->id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+
+                $code = $masafr->verification_code;
+                if ($masafr->country_code == "966") {
+                    //sms
+                } else {
+                    //email
+                }
+            }
+        } catch (\Exception $e) {
+            return $this->returnError('200', 'fail');
+        }
+    }
+
     public function varifyAccount(Request $request)
     {
+
         try {
             $rules = [
                 'type' => 'required|boolean',
@@ -35,26 +84,54 @@ trait GeneralTrait
             }
 
             if ($request->type == 0) {
-                // user
+
+                // user side
+
                 $user = User::find($request->id);
                 if (!$user) {
                     return $this->returnError('202', 'fail');
                 }
-
-                if ($user->verification_code == $request->code) {
-                    $user->update([
-                        'is_verified' => 1
-                    ]);
-                    return $this->returnSuccessMessage('success');
+                if ($user->active_try < 3) {
+                    if ($user->verification_code == $request->code) {
+                        $user->update([
+                            'is_verified' => 1
+                        ]);
+                        return $this->returnSuccessMessage('success');
+                    } else {
+                        $mytime = Carbon\Carbon::now();
+                        $wrong_active_try = $user->active_try + 1;
+                        $user->update([
+                            'active_try' => $wrong_active_try,
+                            'last_try_verify' => $mytime
+                        ]);
+                        return $this->returnError('700', 'fail');
+                    }
                 } else {
-                    if($user->active_try < 3){
-                    $wrong_active_try = $user->active_try + 1;
-                    $user->update([
-                        'active_try' => $wrong_active_try
-                    ]);
-                    return $this->returnError('700', 'fail');
-                }else if($user->active_try == 3)
-                    return $this->returnError('800', 'fail');
+                    $date1 = new DateTime($user->last_try_verify);
+                    $date2 = new DateTime();
+                    $diff = $date1->diff($date2);
+                    $diffInYears   = $diff->h;
+                    if ($diffInYears >= 12) {
+                        $user->update([
+                            'active_try' => 0
+                        ]);
+                        if ($user->verification_code == $request->code) {
+                            $user->update([
+                                'is_verified' => 1
+                            ]);
+                            return $this->returnSuccessMessage('success');
+                        } else {
+                            $mytime = Carbon\Carbon::now();
+                            $wrong_active_try = $user->active_try + 1;
+                            $user->update([
+                                'active_try' => $wrong_active_try,
+                                'last_try_verify' => $mytime
+                            ]);
+                            return $this->returnError('700', 'fail');
+                        }
+                    } else {
+                        return $this->returnError('800', 'fail');
+                    }
                 }
             } else if ($request->type == 1) {
                 // masafr
@@ -63,17 +140,47 @@ trait GeneralTrait
                 if (!$masafr) {
                     return $this->returnError('202', 'fail');
                 }
-
-                if ($masafr->verification_code == $request->code) {
-                    $masafr->update([
-                        'is_verified' => 1
-                    ]);
+                if ($masafr->active_try < 3) {
+                    if ($masafr->verification_code == $request->code) {
+                        $masafr->update([
+                            'is_verified' => 1
+                        ]);
+                        return $this->returnSuccessMessage('success');
+                    } else {
+                        $mytime = Carbon\Carbon::now();
+                        $wrong_active_try = $masafr->active_try + 1;
+                        $masafr->update([
+                            'active_try' => $wrong_active_try,
+                            'last_try_verify' => $mytime
+                        ]);
+                        return $this->returnError('700', 'fail');
+                    }
                 } else {
-                    $wrong_active_try = $masafr->active_try++;
-                    $masafr->update([
-                        'active_try' =>$wrong_active_try
-                    ]);
-                    return $this->returnError('data', 'fail');
+                    $date1 = new DateTime($masafr->last_try_verify);
+                    $date2 = new DateTime();
+                    $diff = $date1->diff($date2);
+                    $diffInYears   = $diff->h;
+                    if ($diffInYears >= 12) {
+                        $masafr->update([
+                            'active_try' => 0
+                        ]);
+                        if ($masafr->verification_code == $request->code) {
+                            $masafr->update([
+                                'is_verified' => 1
+                            ]);
+                            return $this->returnSuccessMessage('success');
+                        } else {
+                            $mytime = Carbon\Carbon::now();
+                            $wrong_active_try = $masafr->active_try + 1;
+                            $masafr->update([
+                                'active_try' => $wrong_active_try,
+                                'last_try_verify' => $mytime
+                            ]);
+                            return $this->returnError('700', 'fail');
+                        }
+                    } else {
+                        return $this->returnError('800', 'fail');
+                    }
                 }
             }
         } catch (\Exception $e) {

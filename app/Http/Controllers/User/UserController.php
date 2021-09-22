@@ -86,12 +86,14 @@ class UserController extends Controller
                 $file_name  = $this->saveImage($request->photo, 'users');
             }
             // return $file_name;
+            $code =  rand(100000, 999999);
             $userID =  User::insertGetId([
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'password' => bcrypt($request->password),
+                'verification_code' => $code,
                 'photo' => $file_name,
                 'country_code' => $request->country_code
             ]);

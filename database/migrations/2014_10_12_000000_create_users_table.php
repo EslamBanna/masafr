@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->integer('active_try')->default(0)->comment('how many he try to send a verfication code to mobile phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_verified')->default(0)->comment('0 => no  1 => yes');
+            $table->dateTime('last_try_verify')->nullable();
+            $table->dateTime('last_send_verify_code')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->integer('orders_count')->default(0);

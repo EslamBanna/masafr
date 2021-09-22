@@ -24,6 +24,8 @@ class Masafr extends Authenticatable implements JWTSubject
         'validation_code',
         'active',
         'active_try',
+        'last_try_verify',
+        'last_send_verify_code',
         'national_id_number',
         'nationality',
         'car_name',

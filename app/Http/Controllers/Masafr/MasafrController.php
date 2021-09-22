@@ -88,6 +88,7 @@ class MasafrController extends Controller
                 $file_name  = $this->saveImage($request->photo, 'masafrs');
             }
 
+            $code =  rand(100000, 999999);
             $masafrID =  Masafr::insertGetId([
                 'email' => $request->email,
                 'country_code' => $request->country_code,
@@ -95,7 +96,8 @@ class MasafrController extends Controller
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'password' => bcrypt($request->password),
-                'photo' => $file_name,
+                'verification_code' => $code,
+                'photo' => $file_name
             ]);
             return $this->returnData('masafr id', $masafrID);
         } catch (\Exception $e) {
