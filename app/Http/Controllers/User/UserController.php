@@ -85,6 +85,7 @@ class UserController extends Controller
             if ($request->hasFile('photo')) {
                 $file_name  = $this->saveImage($request->photo, 'users');
             }
+            // return $file_name;
             $userID =  User::insertGetId([
                 'email' => $request->email,
                 'phone' => $request->phone,
@@ -142,7 +143,7 @@ class UserController extends Controller
                 $file_name_id_Photo  = $this->saveImage($request->id_Photo, 'users_id');
             }
             if ($request->hasFile('photo')) {
-                $file_name_photo  = $this->saveImage($request->photo, 'user');
+                $file_name_photo  = $this->saveImage($request->photo, 'users');
             }
             $user->update([
                 'id_Photo' => $file_name_id_Photo ?? $user->id_Photo,

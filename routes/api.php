@@ -34,6 +34,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/all-trips', [Controller::class, 'getAllTrips']);
     Route::post('/create-account', [UserController::class, 'createUser']);
     Route::post('/login', [UserController::class, 'login']);
+    Route::post('/varify-account', [UserController::class, 'varifyAccount']);
 });
 
 Route::group(['prefix' => 'masafr'], function () {
@@ -43,9 +44,9 @@ Route::group(['prefix' => 'masafr'], function () {
     Route::post('/add-masafr-info', [MasafrController::class, 'addMasafrInfo']);
 });
 
-Route::group(['prefix' => 'auth/user'], function () {
+// Route::group(['prefix' => 'auth/user'], function () {
 
-// Route::group(['prefix' => 'auth/user', 'middleware' => 'checkAuth:user-api'], function () {
+Route::group(['prefix' => 'auth/user', 'middleware' => ['checkAuth:user-api', 'checkVerfication:user-api']], function () {
     Route::post('/get-user-info', [UserController::class, 'me']);
     Route::post('/store-transaction', [UserController::class, 'storeTransaction']);
     Route::post('/get-transactions', [UserController::class, 'getTransactions']);
@@ -68,9 +69,9 @@ Route::group(['prefix' => 'auth/user'], function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
 
-Route::group(['prefix' => 'auth/masafr'], function () {
+// Route::group(['prefix' => 'auth/masafr'], function () {
 
-// Route::group(['prefix' => 'auth/masafr', 'middleware' => 'checkAuth:masafr-api'], function () {
+Route::group(['prefix' => 'auth/masafr', 'middleware' => ['checkAuth:masafr-api', 'checkVerfication:masafr-api']], function () {
     Route::post('/get-user-info', [MasafrController::class, 'me']);
     Route::post('/update-masafr-info', [MasafrController::class, 'updateMasafrInfo']);
     Route::post('/store-transaction', [MasafrController::class, 'storeTransaction']);

@@ -20,6 +20,56 @@ use DB;
 trait GeneralTrait
 {
 
+    public function varifyAccount(Request $request)
+    {
+        try {
+            $rules = [
+                'type' => 'required|boolean',
+                'id' => 'required|numeric',
+                'code' => 'required'
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $code = $this->returnCodeAccordingToInput($validator);
+                return $this->returnValidationError($code, $validator);
+            }
+
+            if ($request->type == 0) {
+                // user
+                $user = User::find($request->id);
+                if (!$user) {
+                    return $this->returnError('202', 'fail');
+                }
+
+                if ($user->verification_code == $request->code) {
+                    $user->update([
+                        'is_verified' => 1
+                    ]);
+                    return $this->returnSuccessMessage('success');
+                } else {
+                    return $this->returnError('data', 'fail');
+                }
+            } else if ($request->type == 1) {
+                // masafr
+
+                $masafr = Masafr::find($request->id);
+                if (!$masafr) {
+                    return $this->returnError('202', 'fail');
+                }
+
+                if ($masafr->verification_code == $request->code) {
+                    $masafr->update([
+                        'is_verified' => 1
+                    ]);
+                } else {
+                    return $this->returnError('data', 'fail');
+                }
+            }
+        } catch (\Exception $e) {
+            return $this->returnError('201', 'fail');
+        }
+    }
+
     public function saveImage($photo, $folder)
     {
         $photo->store('/', $folder);
@@ -263,8 +313,8 @@ trait GeneralTrait
                 ]);
 
                 $file_name_attach = null;
-                if ($request->hasFile('attachment')) {
-                    $file_name_attach  = $this->saveImage($request->attachment, 'complains');
+                if ($request->hasFile('attach')) {
+                    $file_name_attach  = $this->saveImage($request->attach, 'complains');
                 }
 
                 ComplainList::create([
@@ -276,12 +326,15 @@ trait GeneralTrait
                 DB::commit();
                 return $this->returnSuccessMessage('success');
             }
-
+            $file_name_attach = null;
+            if ($request->hasFile('attach')) {
+                $file_name_attach  = $this->saveImage($request->attach, 'complains');
+            }
             ComplainList::create([
                 'complain_id' => $complain['id'],
                 'type' => $request->type,
                 'subject' => $request->subject,
-                'attach' => $request->attach
+                'attach' => $file_name_attach
             ]);
             DB::commit();
             return $this->returnSuccessMessage('success');

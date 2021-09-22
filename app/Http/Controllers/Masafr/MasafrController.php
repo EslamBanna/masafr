@@ -67,6 +67,7 @@ class MasafrController extends Controller
 
     public function createMasafr(Request $request)
     {
+        // return $request;
         try {
             $rules = [
                 'email' => 'required|email|unique:masafr,email',

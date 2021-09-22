@@ -39,6 +39,3 @@ class Controller extends BaseController
     }
 }
 
-
-
-// $file_name  = $this->saveImage($request->photo, 'user');

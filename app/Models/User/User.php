@@ -34,7 +34,8 @@ class User extends Authenticatable implements JWTSubject
         'orders_count',
         'bargains_count',
         'email_notifications',
-        'balance'
+        'balance',
+        'is_verified'
     ];
 
     /**

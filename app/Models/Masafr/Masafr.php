@@ -38,7 +38,8 @@ class Masafr extends Authenticatable implements JWTSubject
         'negative_points_count',
         'sms_notifications',
         'email_notifications',
-        'balance'
+        'balance',
+        'is_verified'
     ];
     protected $hidden = ['password'];
 
